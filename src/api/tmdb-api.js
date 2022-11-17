@@ -101,3 +101,17 @@ export const getMovie = (args) => {
        throw error
     });
   };
+
+  export const getDiscoverTV = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+       throw error
+    });
+  };
