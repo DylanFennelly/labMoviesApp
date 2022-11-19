@@ -51,7 +51,7 @@ export default function MovieCard({ tv, action }) {
             </Avatar>
           ) : null
         }
-        name={
+        title={
           <Typography variant="h5" component="p">
             {tv.name}{" "}
           </Typography>
