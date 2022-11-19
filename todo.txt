@@ -3,7 +3,6 @@ TODO
 19/11: Favourites List for TV
 19/11: Filter card and list for TV
 19/11: Reviews for TV
-19/11: Change & add details on TVDetails
 
 
 
