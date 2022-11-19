@@ -13,7 +13,7 @@ import EventIcon from '@mui/icons-material/Event';
 import TodayIcon from '@mui/icons-material/Today';
 import AlbumIcon from '@mui/icons-material/Album';
 import TvIcon from '@mui/icons-material/Tv';
-//import MovieReviews from "../movieReviews"
+import TVReviews from "../tvReviews"
 
 
 const root = {
@@ -113,7 +113,7 @@ const TVDetails = ({ tv }) => {
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        {/* <MovieReviews movie={movie} /> */}
+        <TVReviews tv={tv} />
       </Drawer>
       </>
   );
