@@ -13,7 +13,7 @@ function TVListPageTemplate({ tvs, title, action }) {
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
-  let displayedTVs = tvs
+   let displayedTVs = tvs
     .filter((m) => {
       return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
