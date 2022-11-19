@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 
 
-const MovieDetailsPage = (props) => {
+const TVDetailsPage = (props) => {
   const { id } = useParams();
 
   const { data: tv, error, isLoading, isError } = useQuery(

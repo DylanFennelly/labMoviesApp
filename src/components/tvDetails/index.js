@@ -8,6 +8,11 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
+import VideocamIcon from '@mui/icons-material/Videocam';
+import EventIcon from '@mui/icons-material/Event';
+import TodayIcon from '@mui/icons-material/Today';
+import AlbumIcon from '@mui/icons-material/Album';
+import TvIcon from '@mui/icons-material/Tv';
 //import MovieReviews from "../movieReviews"
 
 
@@ -50,14 +55,22 @@ const TVDetails = ({ tv }) => {
       <Paper component="ul" sx={root}>
         <Chip icon={<AccessTimeIcon />} label={`${tv.episode_run_time[0]} min./EP`} />
         <Chip
-          icon={<MonetizationIcon />}
-          label={`${tv.number_of_episodes}`}
+          icon={<AlbumIcon />}
+          label={`Seasons: ${tv.number_of_seasons}`}
+        />
+        <Chip
+          icon={<VideocamIcon />}
+          label={`Episodes: ${tv.number_of_episodes}`}
         />
         <Chip
           icon={<StarRate />}
-          label={`${tv.vote_average} (${tv.vote_count}`}
+          label={`Rating: ${tv.vote_average} (${tv.vote_count} total ratings)`}
         />
-        <Chip label={`First Aired: ${tv.first_air_date}`} />
+      </Paper>
+      <Paper component="ul" sx={root}>
+        <Chip icon={<TvIcon/>} label={`Status: ${tv.status}`} />
+        <Chip icon={<TodayIcon/>} label={`First Aired: ${tv.first_air_date}`} />
+        <Chip icon={<EventIcon/>} label={`Last Aired: ${tv.last_air_date}`} />
       </Paper>
       <Paper 
         component="ul" 
@@ -72,6 +85,20 @@ const TVDetails = ({ tv }) => {
           </li>
         ))}
       </Paper>
+      <Paper 
+        component="ul" 
+        sx={root}
+      >
+        <li>
+          <Chip label="Networks" sx={chip} color="primary" />
+        </li>
+        {tv.networks.map((c) => (
+          <li key={c.name}>
+            <Chip label={c.name} sx={chip} />
+          </li>
+        ))}
+      </Paper>
+      
       <Fab
         color="secondary"
         variant="extended"
