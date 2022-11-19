@@ -1,14 +1,14 @@
 import React from "react";
-import { getMovies } from "../api/tmdb-api";
-import PageTemplate from '../components/templateMovieListPage';
+import { getDiscoverTV } from "../api/tmdb-api";
+import PageTemplate from '../components/templateTVListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
 
-const HomePage = (props) => {
+const DiscoverTVPage = (props) => {
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
+  const {  data, error, isLoading, isError }  = useQuery('discover', getDiscoverTV)
 
   if (isLoading) {
     return <Spinner />
@@ -17,21 +17,21 @@ const HomePage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
-  const movies = data.results;
+  const tvs = data.results;
 
   // Redundant, but necessary to avoid app crashing.
-  const favourites = movies.filter(m => m.favourite)
+  const favourites = tvs.filter(m => m.favourite)
   localStorage.setItem('favourites', JSON.stringify(favourites))
-  const addToFavourites = (movieId) => true 
+  const addToFavourites = (tvId) => true 
 
   return (
     <PageTemplate
       title="Discover TV Series"
-      movies={movies}
-      action={(movie) => {
-        return <AddToFavouritesIcon movie={movie} />
+      tvs={tvs}
+      action={(tv) => {
+        return <AddToFavouritesIcon tv={tv} />
       }}
     />
   );
 };
-export default HomePage;
+export default DiscoverTVPage;
