@@ -14,12 +14,12 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
-import { MoviesContext } from "../../contexts/moviesContext";       //may need to change
+import { TVContext } from "../../contexts/tvContext";       //may need to change
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 export default function MovieCard({ tv, action }) {
-  const { favourites, addToFavourites } = useContext(MoviesContext);
-  const { mustWatch, addToMustWatch } = useContext(MoviesContext);
+  const { favourites, addToFavourites } = useContext(TVContext);
+  const { mustWatch, addToMustWatch } = useContext(TVContext);
  
    if (favourites.find((id) => id === tv.id)) {
      tv.favourite = true;
