@@ -17,7 +17,7 @@ import Avatar from '@mui/material/Avatar';
 import { TVContext } from "../../contexts/tvContext";       //may need to change
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-export default function MovieCard({ tv, action }) {
+export default function TVCard({ tv, action }) {
   const { favourites, addToFavourites } = useContext(TVContext);
   const { mustWatch, addToMustWatch } = useContext(TVContext);
  
