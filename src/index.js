@@ -19,6 +19,8 @@ import TVDetailsPage from "./pages/tvDetailsPage"
 import TVReviewPage from "./pages/tvReviewPage";
 import TVContextProvider from "./contexts/tvContext";
 import FavouriteTVPage from "./pages/favouriteTVPage";
+import PopularActorsPage from "./pages/popularActorsPage";
+import ActorsContextProvider from "./contexts/actorsContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,21 +39,24 @@ const App = () => {
         <SiteHeader />
         <MoviesContextProvider>
           <TVContextProvider>
-            <Routes>
-              <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
-              <Route path="/movies/:id" element={<MoviePage />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="*" element={ <Navigate to="/" /> } />
-              <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
-              <Route path="/movies/upcoming" element={<UpcomingPage />} />
-              <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
-              <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
-              <Route path="/movies/top" element={<TopMoviesPage />} />
-              <Route path="/tv" element={<DiscoverTVPage />} />
-              <Route path="/tv/:id" element={<TVDetailsPage />} />
-              <Route path="/tv/reviews/:id" element={<TVReviewPage />} />
-              <Route path="/tv/favourites" element={<FavouriteTVPage />} />
-            </Routes>
+            <ActorsContextProvider>
+              <Routes>
+                <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
+                <Route path="/movies/:id" element={<MoviePage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="*" element={ <Navigate to="/" /> } />
+                <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
+                <Route path="/movies/upcoming" element={<UpcomingPage />} />
+                <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+                <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
+                <Route path="/movies/top" element={<TopMoviesPage />} />
+                <Route path="/tv" element={<DiscoverTVPage />} />
+                <Route path="/tv/:id" element={<TVDetailsPage />} />
+                <Route path="/tv/reviews/:id" element={<TVReviewPage />} />
+                <Route path="/tv/favourites" element={<FavouriteTVPage />} />
+                <Route path="/actors" element={<PopularActorsPage />} />
+              </Routes>
+            </ActorsContextProvider>
           </TVContextProvider>
         </MoviesContextProvider>
       </BrowserRouter>

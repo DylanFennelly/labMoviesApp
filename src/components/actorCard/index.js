@@ -14,7 +14,7 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
-import { ActorContext } from "../../contexts/actorContext";
+import { ActorContext } from "../../contexts/actorsContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 export default function ActorCard({ actor, action }) {
