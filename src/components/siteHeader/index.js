@@ -38,7 +38,7 @@ const SiteHeader = ({ history }) => {
 
   const TVOptions = [
     { label: "Discover", path: "/tv" },
-    { label: "TV Favourites", path: "/tv/favourites" },
+    { label: "Favourites", path: "/tv/favourites" },
   ];
 
   const mobileOptions = [
