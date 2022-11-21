@@ -15,25 +15,17 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorMovie, setAnchorMovie] = useState(null);
   const [anchorTV, setAnchorTV] = useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorMobile, setAnchorMobile] = useState(null);
+  const openMovie = Boolean(anchorMovie);
   const openTV = Boolean(anchorTV);
+  const openMobile = Boolean(anchorMobile);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const navigate = useNavigate();
-
-  const menuOptions = [
-    { label: "Home", path: "/" },
-    { label: "Upcoming", path: "/movies/upcoming" },
-    { label: "Top Rated", path: "/movies/top" },
-    { label: "TV Series", path: "/tv" },
-    { label: "Favourites", path: "/movies/favourites" },
-    { label: "Must Watch", path: "/movies/mustwatch" },
-    { label: "TV Favourites", path: "/tv/favourites" },
-  ];
 
   //for separate drop down menus on desktop view
   const movieOptions = [
@@ -49,16 +41,30 @@ const SiteHeader = ({ history }) => {
     { label: "TV Favourites", path: "/tv/favourites" },
   ];
 
+  const mobileOptions = [
+    { label: "Home", path: "/" },
+    { label: "Upcoming", path: "/movies/upcoming" },
+    { label: "Top Rated", path: "/movies/top" },
+    { label: "Favourites", path: "/movies/favourites" },
+    { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "TV Series", path: "/tv" },
+    { label: "TV Favourites", path: "/tv/favourites" },
+  ];
+
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL, { replace: true });
   };
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMovieMenu = (event) => {
+    setAnchorMovie(event.currentTarget);
   };
 
   const handleMenuTV = (event) => {
     setAnchorTV(event.currentTarget);
+  };
+
+  const handleMobileMenu = (event) => {
+    setAnchorMobile(event.currentTarget);
   };
 
   return (
@@ -74,17 +80,17 @@ const SiteHeader = ({ history }) => {
             {isMobile ? (
               <>
                 <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
+                  aria-label="menu-mobile"
+                  aria-controls="menu-mobile-appbar"
                   aria-haspopup="true"
-                  onClick={handleMenu}
+                  onClick={handleMobileMenu}
                   color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
                 <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
+                  id="menu-mobile-appbar"
+                  anchorEl={anchorMobile}
                   anchorOrigin={{
                     vertical: "top",
                     horizontal: "right",
@@ -94,10 +100,10 @@ const SiteHeader = ({ history }) => {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
+                  open={openMobile}
+                  onClose={() => setAnchorMobile(null)}
                 >
-                  {menuOptions.map((opt) => (
+                  {mobileOptions.map((opt) => (
                     <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
@@ -113,13 +119,13 @@ const SiteHeader = ({ history }) => {
                 id="movie-menu"
                 aria-controls="movie-menu-appbar"
                 aria-haspopup="true"
-                onClick={handleMenu}
+                onClick={handleMovieMenu}
                 color="inherit">
                   Movies
               </Button>
               <Menu
               id="movie-menu-appbar"
-              anchorEl={anchorEl}
+              anchorEl={anchorMovie}
               anchorOrigin={{
                 vertical: "top",
                 horizontal: "right",
@@ -129,8 +135,8 @@ const SiteHeader = ({ history }) => {
                 vertical: "top",
                 horizontal: "right",
               }}
-              open={open}
-              onClose={() => setAnchorEl(null)}>
+              open={openMovie}
+              onClose={() => setAnchorMovie(null)}>
                 {movieOptions.map((opt) => (
                     <MenuItem
                       key={opt.label}
