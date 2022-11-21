@@ -17,9 +17,12 @@ const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 const SiteHeader = ({ history }) => {
   const [anchorMovie, setAnchorMovie] = useState(null);
   const [anchorTV, setAnchorTV] = useState(null);
+  const [anchorActor, setAnchorActor] = useState(null);
   const [anchorMobile, setAnchorMobile] = useState(null);
+  
   const openMovie = Boolean(anchorMovie);
   const openTV = Boolean(anchorTV);
+  const openActor = Boolean(anchorActor);
   const openMobile = Boolean(anchorMobile);
 
   const theme = useTheme();
@@ -41,6 +44,10 @@ const SiteHeader = ({ history }) => {
     { label: "Favourites", path: "/tv/favourites" },
   ];
 
+  const ActorOptions = [
+    { label: "Popular", path: "/actors" },
+  ];
+
   const mobileOptions = [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" },
@@ -49,6 +56,7 @@ const SiteHeader = ({ history }) => {
     { label: "Must Watch", path: "/movies/mustwatch" },
     { label: "TV Series", path: "/tv" },
     { label: "TV Favourites", path: "/tv/favourites" },
+    { label: "Popular Actors", path: "/actors" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -63,6 +71,10 @@ const SiteHeader = ({ history }) => {
     setAnchorTV(event.currentTarget);
   };
 
+  const handleMenuActor = (event) => {
+    setAnchorActor(event.currentTarget);
+  };
+
   const handleMobileMenu = (event) => {
     setAnchorMobile(event.currentTarget);
   };
@@ -75,7 +87,7 @@ const SiteHeader = ({ history }) => {
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
+            All you ever wanted to know about Movies, TV and more!
           </Typography>
             {isMobile ? (
               <>
@@ -169,6 +181,37 @@ const SiteHeader = ({ history }) => {
               open={openTV}
               onClose={() => setAnchorTV(null)}>
                 {TVOptions.map((opt) => (
+                    <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+              </Menu>
+              <Button
+                id="actor-menu"
+                aria-controls="actor-menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenuActor}
+                color="inherit">
+                  Actors
+              </Button>
+              <Menu
+              id="actor-menu-appbar"
+              anchorEl={anchorActor}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={openActor}
+              onClose={() => setAnchorActor(null)}>
+                {ActorOptions.map((opt) => (
                     <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
