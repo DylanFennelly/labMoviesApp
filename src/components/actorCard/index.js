@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { ActorContext } from "../../contexts/actorsContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import WcIcon from '@mui/icons-material/Wc';
+import Divider from '@mui/material/Divider';
 
 export default function ActorCard({ actor, action }) {
   const { favourites, addToFavourites } = useContext(ActorContext);
@@ -25,6 +27,18 @@ export default function ActorCard({ actor, action }) {
      actor.favourite = true;
    } else {
      actor.favourite = false
+   }
+
+   //gender is stored as number value, 1 for female and 2 for male. This translates that number value into a string value
+   (actor.gender === 1) ? actor.gender = "  Female" : actor.gender = "  Male"
+
+   //since "title" is used for movies and "name" for tv series, check media_type of known_for entry and return proper naming for each
+   function handleMediaType(med){
+    if (med.media_type === "movie"){
+        return med.title
+    }else{
+        return med.name
+    }
    }
  
    const handleAddToFavourite = (e) => {
@@ -63,9 +77,39 @@ export default function ActorCard({ actor, action }) {
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
+              <WcIcon/>
               {actor.gender}
             </Typography>
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item xs={20}>
+          <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>
+                Known for:
+          </Typography>
+          {actor.known_for.map((med) => (
+            // https://smartdevpreneur.com/how-to-make-mui-typography-text-italic-bold-or-with-ellipses/
+            <Typography variant="h6" component="p" >
+                {handleMediaType(med)}
+                <Divider />
+            </Typography>
+          ))}
+
+            {/* <Typography variant="h6" component="p">
+                Known for:
+            </Typography>
+            https://smartdevpreneur.com/how-to-make-mui-typography-text-italic-bold-or-with-ellipses/
+            <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>
+                {actor.known_for[0].title}
+                <Divider />
+            </Typography>
+            <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>     
+                {actor.known_for[1].title}
+                <Divider />
+            </Typography>
+            <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>
+                {actor.known_for[2].title}
+            </Typography> */}
           </Grid>
         </Grid>
       </CardContent>

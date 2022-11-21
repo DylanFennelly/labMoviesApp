@@ -35,7 +35,7 @@ function ActorListPageTemplate({ actors, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <ActorList action={action} ctors={displayedActors}></ActorList>      
+        <ActorList action={action} actors={displayedActors}></ActorList>      
       </Grid>
     </Grid>
   );
