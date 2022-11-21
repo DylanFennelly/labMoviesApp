@@ -14,38 +14,32 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
-import { TVContext } from "../../contexts/tvContext";
+import { ActorContext } from "../../contexts/actorContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-export default function TVCard({ tv, action }) {
-  const { favourites, addToFavourites } = useContext(TVContext);
-  const { mustWatch, addToMustWatch } = useContext(TVContext);
+export default function ActorCard({ actor, action }) {
+  const { favourites, addToFavourites } = useContext(ActorContext);
+  const { mustWatch, addToMustWatch } = useContext(ActorContext);
  
-   if (favourites.find((id) => id === tv.id)) {
-     tv.favourite = true;
+   if (favourites.find((id) => id === actor.id)) {
+     actor.favourite = true;
    } else {
-     tv.favourite = false
-   }
-
-   if (mustWatch.find((id) => id === tv.id)) {
-    tv.mustWatch = true;
-   }else{
-    tv.mustWatch = false;
+     actor.favourite = false
    }
  
    const handleAddToFavourite = (e) => {
      e.preventDefault();
-     addToFavourites(tv);
+     addToFavourites(actor);
    };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          tv.favourite ? (
+          actor.favourite ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
               <FavoriteIcon />
             </Avatar>
-          ) : tv.mustWatch ? (
+          ) : actor.mustWatch ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
               <PlaylistAddIcon />
             </Avatar>
@@ -53,15 +47,15 @@ export default function TVCard({ tv, action }) {
         }
         title={
           <Typography variant="h5" component="p">
-            {tv.name}{" "}
+            {actor.name}{" "}
           </Typography>
         }
       />
       <CardMedia
         sx={{ height: 500 }}
         image={
-          tv.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${tv.poster_path}`
+          actor.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
             : img
         }
       />
@@ -70,20 +64,14 @@ export default function TVCard({ tv, action }) {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {tv.first_air_date}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {tv.vote_average}{" "}
+              {actor.gender}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {action(tv)}
-        <Link to={`/tv/${tv.id}`}>
+        {action(actor)}
+        <Link to={`/actor/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
