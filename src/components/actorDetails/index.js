@@ -13,6 +13,8 @@ import EventIcon from '@mui/icons-material/Event';
 import TodayIcon from '@mui/icons-material/Today';
 import AlbumIcon from '@mui/icons-material/Album';
 import TvIcon from '@mui/icons-material/Tv';
+import HomeIcon from '@mui/icons-material/Home';
+import WcIcon from '@mui/icons-material/Wc';
 
 
 const root = {
@@ -25,8 +27,19 @@ const root = {
 };
 const chip = { margin: 0.5 };
 
+
 const ActorDetails = ({ actor }) => { 
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+  //only printing deathday is actor is dead
+  function isDead(actor){
+    if (actor.deathday !== null){
+      return <Chip icon={<EventIcon/>} label={`Died: ${actor.deathday}`} />
+    }
+  }
+
+  //gender is stored as number value, 1 for female and 2 for male. This translates that number value into a string value
+  (actor.gender === 1) ? actor.gender = "  Female" : actor.gender = "  Male"
 
   return (
     <>
@@ -42,31 +55,19 @@ const ActorDetails = ({ actor }) => {
         component="ul" 
         sx={root}
       >
-        <li>
-          <Chip label="Genres" sx={chip} color="primary" />
-        </li>
+          <Chip 
+          icon={<TodayIcon/>} 
+          label={`Born: ${actor.birthday}`} />
+          {isDead(actor)}
+          <Chip 
+          icon={<HomeIcon/>} 
+          label={ actor.place_of_birth } />
+          
       </Paper>
       <Paper component="ul" sx={root}>
-        test
-      </Paper>
-      <Paper component="ul" sx={root}>
-        test
-      </Paper>
-      <Paper 
-        component="ul" 
-        sx={root}
-      >
-        <li>
-          <Chip label="Production Countries" sx={chip} color="primary" />
-        </li>
-      </Paper>
-      <Paper 
-        component="ul" 
-        sx={root}
-      >
-        <li>
-          <Chip label="Networks" sx={chip} color="primary" />
-        </li>
+      <Chip 
+          icon={<WcIcon/>} 
+          label={actor.gender} />
       </Paper>
       </>
   );
