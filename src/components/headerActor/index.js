@@ -36,4 +36,4 @@ const ActorHeader = (props) => {
   );
 };
 
-export default TVHeader;
+export default ActorHeader;
