@@ -21,6 +21,7 @@ import TVContextProvider from "./contexts/tvContext";
 import FavouriteTVPage from "./pages/favouriteTVPage";
 import PopularActorsPage from "./pages/popularActorsPage";
 import ActorsContextProvider from "./contexts/actorsContext";
+import ActorDetailsPage from "./pages/actorDetailsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -55,6 +56,7 @@ const App = () => {
                 <Route path="/tv/reviews/:id" element={<TVReviewPage />} />
                 <Route path="/tv/favourites" element={<FavouriteTVPage />} />
                 <Route path="/actors" element={<PopularActorsPage />} />
+                <Route path="/actors/:id" element={<ActorDetailsPage />} />
               </Routes>
             </ActorsContextProvider>
           </TVContextProvider>
