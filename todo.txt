@@ -1,6 +1,7 @@
 TODO
 
-19/11: Filter card and list for TV
+19/11: Filter card and list for TV and actors
+22/11: "Known for" movies on Actor details page
 
 
 

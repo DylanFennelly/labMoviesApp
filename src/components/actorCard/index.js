@@ -94,22 +94,6 @@ export default function ActorCard({ actor, action }) {
                 <Divider />
             </Typography>
           ))}
-
-            {/* <Typography variant="h6" component="p">
-                Known for:
-            </Typography>
-            https://smartdevpreneur.com/how-to-make-mui-typography-text-italic-bold-or-with-ellipses/
-            <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>
-                {actor.known_for[0].title}
-                <Divider />
-            </Typography>
-            <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>     
-                {actor.known_for[1].title}
-                <Divider />
-            </Typography>
-            <Typography variant="h6" component="p" sx={{fontWeight: 'bold'}}>
-                {actor.known_for[2].title}
-            </Typography> */}
           </Grid>
         </Grid>
       </CardContent>

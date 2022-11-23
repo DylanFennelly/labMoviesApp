@@ -3,7 +3,7 @@ import { getPopularActors } from "../api/tmdb-api";
 import PageTemplate from '../components/templateActorListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import AddToTVFavouritesIcon from '../components/cardIcons/addToTVFavourites'       //need to change
+import AddToActorFavouritesIcon from '../components/cardIcons/addToActorFavourites'       //need to change
 
 
 const PopularActorsPage = (props) => {
@@ -29,7 +29,7 @@ const PopularActorsPage = (props) => {
       title="Discover Actors"
       actors={actors}
       action={(actor) => {
-        // return <AddToActorFavouritesIcon actor={actor} />
+         return <AddToActorFavouritesIcon actor={actor} />
       }}
     />
   );
