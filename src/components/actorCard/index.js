@@ -40,6 +40,15 @@ export default function ActorCard({ actor, action }) {
         return med.name
     }
    }
+
+   //check for media type before linking to movie or tv
+   function handleLinkType(med){
+    if (med.media_type === "movie"){
+      return `/movies/${med.id}`
+    }else{
+      return `/tv/${med.id}`
+  }
+   }
  
    const handleAddToFavourite = (e) => {
      e.preventDefault();
@@ -89,10 +98,12 @@ export default function ActorCard({ actor, action }) {
           </Typography>
           {actor.known_for.map((med) => (
             // https://smartdevpreneur.com/how-to-make-mui-typography-text-italic-bold-or-with-ellipses/
+            <Link to={handleLinkType(med)}>
             <Typography variant="h6" component="p" >
                 {handleMediaType(med)}
                 <Divider />
             </Typography>
+            </Link>
           ))}
           </Grid>
         </Grid>
