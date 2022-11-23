@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import AddToActorFavouritesIcon from "../cardIcons/addToActorFavourites";
 
 const ActorHeader = (props) => {
   const actor = props.actor;
@@ -28,6 +29,8 @@ const ActorHeader = (props) => {
       <Typography variant="h4" component="h3">
         {actor.name}
       </Typography>
+
+      <AddToActorFavouritesIcon actor={actor} />
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />
