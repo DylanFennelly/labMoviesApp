@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
+import AddToFavouritesIcon from "../cardIcons/addToFavourites";
 
 const MovieHeader = (props) => {
   const movie = props.movie;
@@ -26,8 +27,8 @@ const MovieHeader = (props) => {
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
-      <Typography variant="h4" component="h3">
-        {movie.title}
+      <Typography variant="h4" component="h3" align="center">
+        <b>{movie.title}</b>
         <a href={movie.homepage}>
           <HomeIcon color="primary" />
         </a>
@@ -35,6 +36,7 @@ const MovieHeader = (props) => {
         <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span>
       </Typography>
 
+      <AddToFavouritesIcon movie={movie} />
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
