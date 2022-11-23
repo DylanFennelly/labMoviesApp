@@ -46,6 +46,7 @@ const SiteHeader = ({ history }) => {
 
   const ActorOptions = [
     { label: "Popular", path: "/actors" },
+    { label: "Favourites", path: "/actors/favourites" },
   ];
 
   const mobileOptions = [
@@ -57,6 +58,7 @@ const SiteHeader = ({ history }) => {
     { label: "TV Series", path: "/tv" },
     { label: "TV Favourites", path: "/tv/favourites" },
     { label: "Popular Actors", path: "/actors" },
+    { label: "Favourite Actors", path: "/actors/favourites" },
   ];
 
   const handleMenuSelect = (pageURL) => {
