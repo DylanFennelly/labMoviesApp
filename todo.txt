@@ -2,7 +2,8 @@ TODO
 
 19/11: Filter card and list for TV and actors
 23/11: Reviews for TV
-23/11: "add to favourites" on movie/tv/actor page
+23/11: "remove from favourites" on movie/tv/actor page
+23/11: BUG: when returning to discover actors page, all actor genders set to male
 
 
 
