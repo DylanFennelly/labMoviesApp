@@ -4,12 +4,11 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
-import AddToFavouritesIcon from "../cardIcons/addToFavourites";
+import AddToActorFavouritesIcon from "../cardIcons/addToActorFavourites";
 
-const MovieHeader = (props) => {
-  const movie = props.movie;
+const ActorHeader = (props) => {
+  const actor = props.actor;
   const navigate = useNavigate();
 
   return (
@@ -27,16 +26,12 @@ const MovieHeader = (props) => {
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
 
-      <Typography variant="h4" component="h3" align="center">
-        <b>{movie.title}</b>
-        <a href={movie.homepage}>
-          <HomeIcon color="primary" />
-        </a>
-        <br />
-        <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span>
+      <Typography variant="h4" component="h3">
+        {actor.name}
       </Typography>
 
-      <AddToFavouritesIcon movie={movie} />
+      <AddToActorFavouritesIcon actor={actor} />
+
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
@@ -44,4 +39,4 @@ const MovieHeader = (props) => {
   );
 };
 
-export default MovieHeader;
+export default ActorHeader;

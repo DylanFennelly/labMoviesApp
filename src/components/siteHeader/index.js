@@ -15,30 +15,70 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [anchorMovie, setAnchorMovie] = useState(null);
+  const [anchorTV, setAnchorTV] = useState(null);
+  const [anchorActor, setAnchorActor] = useState(null);
+  const [anchorMobile, setAnchorMobile] = useState(null);
+  
+  const openMovie = Boolean(anchorMovie);
+  const openTV = Boolean(anchorTV);
+  const openActor = Boolean(anchorActor);
+  const openMobile = Boolean(anchorMobile);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const navigate = useNavigate();
 
-  const menuOptions = [
+  //for separate drop down menus on desktop view
+  const movieOptions = [
+    { label: "Discover", path: "/" },
+    { label: "Upcoming", path: "/movies/upcoming" },
+    { label: "Top Rated", path: "/movies/top" },
+    { label: "Favourites", path: "/movies/favourites" },
+    { label: "Must Watch", path: "/movies/mustwatch" },
+  ]
+
+  const TVOptions = [
+    { label: "Discover", path: "/tv" },
+    { label: "Favourites", path: "/tv/favourites" },
+  ];
+
+  const ActorOptions = [
+    { label: "Popular", path: "/actors" },
+    { label: "Favourites", path: "/actors/favourites" },
+  ];
+
+  const mobileOptions = [
     { label: "Home", path: "/" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Top Rated", path: "/movies/top" },
-    { label: "TV Series", path: "/tv" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "TV Series", path: "/tv" },
     { label: "TV Favourites", path: "/tv/favourites" },
+    { label: "Popular Actors", path: "/actors" },
+    { label: "Favourite Actors", path: "/actors/favourites" },
   ];
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL, { replace: true });
   };
 
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMovieMenu = (event) => {
+    setAnchorMovie(event.currentTarget);
+  };
+
+  const handleMenuTV = (event) => {
+    setAnchorTV(event.currentTarget);
+  };
+
+  const handleMenuActor = (event) => {
+    setAnchorActor(event.currentTarget);
+  };
+
+  const handleMobileMenu = (event) => {
+    setAnchorMobile(event.currentTarget);
   };
 
   return (
@@ -49,22 +89,22 @@ const SiteHeader = ({ history }) => {
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
+            All you ever wanted to know about Movies, TV and more!
           </Typography>
             {isMobile ? (
               <>
                 <IconButton
-                  aria-label="menu"
-                  aria-controls="menu-appbar"
+                  aria-label="menu-mobile"
+                  aria-controls="menu-mobile-appbar"
                   aria-haspopup="true"
-                  onClick={handleMenu}
+                  onClick={handleMobileMenu}
                   color="inherit"
                 >
                   <MenuIcon />
                 </IconButton>
                 <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
+                  id="menu-mobile-appbar"
+                  anchorEl={anchorMobile}
                   anchorOrigin={{
                     vertical: "top",
                     horizontal: "right",
@@ -74,10 +114,10 @@ const SiteHeader = ({ history }) => {
                     vertical: "top",
                     horizontal: "right",
                   }}
-                  open={open}
-                  onClose={() => setAnchorEl(null)}
+                  open={openMobile}
+                  onClose={() => setAnchorMobile(null)}
                 >
-                  {menuOptions.map((opt) => (
+                  {mobileOptions.map((opt) => (
                     <MenuItem
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
@@ -89,15 +129,99 @@ const SiteHeader = ({ history }) => {
               </>
             ) : (
               <>
-                {menuOptions.map((opt) => (
-                  <Button
-                    key={opt.label}
-                    color="inherit"
-                    onClick={() => handleMenuSelect(opt.path)}
-                  >
-                    {opt.label}
-                  </Button>
-                ))}
+              <Button
+                id="movie-menu"
+                aria-controls="movie-menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMovieMenu}
+                color="inherit">
+                  Movies
+              </Button>
+              <Menu
+              id="movie-menu-appbar"
+              anchorEl={anchorMovie}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={openMovie}
+              onClose={() => setAnchorMovie(null)}>
+                {movieOptions.map((opt) => (
+                    <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+              </Menu>
+              <Button
+                id="tv-menu"
+                aria-controls="tv-menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenuTV}
+                color="inherit">
+                  TV
+              </Button>
+              <Menu
+              id="tv-menu-appbar"
+              anchorEl={anchorTV}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={openTV}
+              onClose={() => setAnchorTV(null)}>
+                {TVOptions.map((opt) => (
+                    <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+              </Menu>
+              <Button
+                id="actor-menu"
+                aria-controls="actor-menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenuActor}
+                color="inherit">
+                  Actors
+              </Button>
+              <Menu
+              id="actor-menu-appbar"
+              anchorEl={anchorActor}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={openActor}
+              onClose={() => setAnchorActor(null)}>
+                {ActorOptions.map((opt) => (
+                    <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+              </Menu>
               </>
             )}
         </Toolbar>

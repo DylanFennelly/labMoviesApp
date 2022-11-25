@@ -1,21 +1,26 @@
+//needed to resolve issue with "known_for" movies not being obtainable data for the actorsDetails api query
+
 import React, { useState } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
-import TVList from "../tvList";
+import ActorList from "../favouriteActorList";
 import Grid from "@mui/material/Grid";
 
-function TVListPageTemplate({ tvs, title, action }) {
+function FavouriteActorListPageTemplate({ actors, title, action }) {
+  console.log("actors", actors)
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
-   let displayedTVs = tvs
+   let displayedActors = actors
     .filter((m) => {
       return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
+
+    console.log("displayed actors", displayedActors)
 
   const handleChange = (type, value) => {
     if (type === "name") setNameFilter(value);
@@ -35,9 +40,9 @@ function TVListPageTemplate({ tvs, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <TVList action={action} tvs={displayedTVs}></TVList>      
+        <ActorList action={action} actors={displayedActors}></ActorList>      
       </Grid>
     </Grid>
   );
 }
-export default TVListPageTemplate;
+export default FavouriteActorListPageTemplate;

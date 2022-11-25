@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import AddToTVFavouritesIcon from "../cardIcons/addToTVFavourites";
 
 const TVHeader = (props) => {
   const tv = props.tv;
@@ -30,6 +31,8 @@ const TVHeader = (props) => {
         <br />
         <span sx={{ fontSize: "1.5rem" }}>{`   "${tv.tagline}"`} </span>
       </Typography>
+
+      <AddToTVFavouritesIcon tv={tv} />
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />

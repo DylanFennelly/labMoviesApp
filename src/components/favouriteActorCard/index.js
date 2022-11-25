@@ -1,3 +1,5 @@
+//version of actorCard without "known for" list, for favourites page
+
 import React, { useContext  } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -14,38 +16,46 @@ import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
-import { TVContext } from "../../contexts/tvContext";
+import { ActorContext } from "../../contexts/actorsContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import WcIcon from '@mui/icons-material/Wc';
+import Divider from '@mui/material/Divider';
 
-export default function TVCard({ tv, action }) {
-  const { favourites, addToFavourites } = useContext(TVContext);
-  const { mustWatch, addToMustWatch } = useContext(TVContext);
+export default function FavouriteActorCard({ actor, action }) {
+  const { favourites, addToFavourites } = useContext(ActorContext);
+  const { mustWatch, addToMustWatch } = useContext(ActorContext);
  
-   if (favourites.find((id) => id === tv.id)) {
-     tv.favourite = true;
+   if (favourites.find((id) => id === actor.id)) {
+     actor.favourite = true;
    } else {
-     tv.favourite = false
+     actor.favourite = false
    }
 
-   if (mustWatch.find((id) => id === tv.id)) {
-    tv.mustWatch = true;
-   }else{
-    tv.mustWatch = false;
+   //gender is stored as number value, 1 for female and 2 for male. This translates that number value into a string value
+   (actor.gender === 1) ? actor.gender = "  Female" : actor.gender = "  Male"
+
+   //since "title" is used for movies and "name" for tv series, check media_type of known_for entry and return proper naming for each
+   function handleMediaType(med){
+    if (med.media_type === "movie"){
+        return med.title
+    }else{
+        return med.name
+    }
    }
  
    const handleAddToFavourite = (e) => {
      e.preventDefault();
-     addToFavourites(tv);
+     addToFavourites(actor);
    };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          tv.favourite ? (
+          actor.favourite ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
               <FavoriteIcon />
             </Avatar>
-          ) : tv.mustWatch ? (
+          ) : actor.mustWatch ? (
             <Avatar sx={{ backgroundColor: 'red' }}>
               <PlaylistAddIcon />
             </Avatar>
@@ -53,15 +63,15 @@ export default function TVCard({ tv, action }) {
         }
         title={
           <Typography variant="h5" component="p">
-            {tv.name}{" "}
+            {actor.name}{" "}
           </Typography>
         }
       />
       <CardMedia
         sx={{ height: 500 }}
         image={
-          tv.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${tv.poster_path}`
+          actor.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
             : img
         }
       />
@@ -69,21 +79,15 @@ export default function TVCard({ tv, action }) {
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              <CalendarIcon fontSize="small" />
-              {tv.first_air_date}
-            </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {tv.vote_average}{" "}
+              <WcIcon/>
+              {actor.gender}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {action(tv)}
-        <Link to={`/tv/${tv.id}`}>
+        {action(actor)}
+        <Link to={`/actors/${actor.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
