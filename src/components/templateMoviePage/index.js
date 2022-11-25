@@ -22,7 +22,6 @@ const TemplateMoviePage = ({ movie, children }) => {
     return <h1>{error.message}</h1>;
   }
   const images = data.posters 
-  console.log(images)
 
   return (
     <>

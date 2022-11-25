@@ -4,6 +4,7 @@ TODO
 23/11: Reviews for TV
 23/11: "remove from favourites" on movie/tv/actor page
 23/11: BUG: when returning to discover actors page, all actor genders set to male
+25/11: add to must watch on upcoming movie
 
 
 
