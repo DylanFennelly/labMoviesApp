@@ -1,4 +1,4 @@
-import React from "react";
+import React,  { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
@@ -6,10 +6,23 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import AddToActorFavouritesIcon from "../cardIcons/addToActorFavourites";
+import RemoveFromActorFavouritesIcon from "../cardIcons/removeFromActorFavourites";
+
+import { ActorContext } from "../../contexts/actorsContext";
 
 const ActorHeader = (props) => {
   const actor = props.actor;
   const navigate = useNavigate();
+  const context = useContext(ActorContext);
+
+  //changes icon and function depending on favourites state of actor
+  function favouritesState(actor){
+    if (!context.favourites.includes(actor.id)) {
+      return <AddToActorFavouritesIcon actor={actor} />
+    }else{
+      return <RemoveFromActorFavouritesIcon actor={actor} />
+    }
+  }
 
   return (
     <Paper 
@@ -30,7 +43,7 @@ const ActorHeader = (props) => {
         {actor.name}
       </Typography>
 
-      <AddToActorFavouritesIcon actor={actor} />
+      {favouritesState(actor)}
 
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />
