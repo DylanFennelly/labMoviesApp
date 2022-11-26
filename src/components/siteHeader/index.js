@@ -37,6 +37,7 @@ const SiteHeader = ({ history }) => {
     { label: "Top Rated", path: "/movies/top" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "My Fantasy Movies", path: "/movies/fantasy"}
   ]
 
   const TVOptions = [
@@ -55,6 +56,7 @@ const SiteHeader = ({ history }) => {
     { label: "Top Rated", path: "/movies/top" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "My Fantasy Movies", path: "/movies/fantasy"},
     { label: "TV Series", path: "/tv" },
     { label: "TV Favourites", path: "/tv/favourites" },
     { label: "Popular Actors", path: "/actors" },
