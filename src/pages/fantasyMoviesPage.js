@@ -1,28 +1,39 @@
-import React from "react";
-import { getMovies } from "../api/tmdb-api";
-import PageTemplate from '../components/templateFantasyMovieListPage';
-import { useQuery } from 'react-query';
+import React, { useContext } from "react";
+import PageTemplate from "../components/templateFantasyMovieListPage";
+import { FantasyMoviesContext } from "../contexts/fantasyMoviesContext";
+import { useQueries } from "react-query";
+import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
+import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import WriteReview from "../components/cardIcons/writeReview";
 import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
 
 
 const FantasyMoviesPage = (props) => {
+  const { fantasy: fantasyIds } = useContext(FantasyMoviesContext);
 
-  const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
+  // Create an array of queries and run in parallel.
+  const favouriteMovieQueries = useQueries(
+    fantasyIds.map((movieId) => {
+      return {
+        queryKey: ["movie", { id: movieId }],
+        queryFn: getMovie,
+      };
+    })
+  );
+  // Check if any of the parallel queries is still loading.
+  const isLoading = favouriteMovieQueries.find((m) => m.isLoading === true);
 
   if (isLoading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
-  if (isError) {
-    return <h1>{error.message}</h1>
-  }  
-  const movies = data.results;
+  const movies = favouriteMovieQueries.map((q) => { 
+    q.data.genre_ids = q.data.genres.map(g => g.id)
+    return q.data
+  });
 
-  // Redundant, but necessary to avoid app crashing.
-  const favourites = movies.filter(m => m.favourite)
-  localStorage.setItem('favourites', JSON.stringify(favourites))
-  const addToFavourites = (movieId) => true 
+  const toDo = () => true;
 
   return (
     <PageTemplate

@@ -1,31 +1,30 @@
 import React from "react";
-import PageTemplate from "../components/templateMoviePage";
-import ReviewForm from "../components/reviewForm";
+import PageTemplate from "../components/templateFantasyMoviePage";
+import FantasyMovieForm from "../components/fantasyMovieForm";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getMovie } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 
-const WriteReviewPage = (props) => {
-  const location = useLocation()
-  const { movieId } = location.state;
-  const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: movieId }],
-    getMovie
-  );
+const AddFantasyMoviePage = (props) => {
+  
+  // const { data: movie, error, isLoading, isError } = useQuery(
+  //   ["movie", { id: movieId }],
+  //   getMovie
+  // );
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  // if (isLoading) {
+  //   return <Spinner />;
+  // }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
-  }
+  // if (isError) {
+  //   return <h1>{error.message}</h1>;
+  // }
   return (
-    <PageTemplate movie={movie}>
-      <ReviewForm movie={movie} />
+    <PageTemplate>
+      <FantasyMovieForm />
     </PageTemplate>
   );
 };
 
-export default WriteReviewPage;
+export default AddFantasyMoviePage;

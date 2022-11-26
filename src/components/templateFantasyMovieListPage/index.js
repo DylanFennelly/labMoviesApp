@@ -5,6 +5,7 @@ import FantasyMovieList from "../fantasyMovieList";
 import Grid from "@mui/material/Grid";
 import AddIcon from '@mui/icons-material/Add';
 import Fab from "@mui/material/Fab";
+import { Link } from "react-router-dom";
 
 function FantasyMovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -40,19 +41,20 @@ function FantasyMovieListPageTemplate({ movies, title, action }) {
         <FantasyMovieList action={action} movies={displayedMovies}></FantasyMovieList>
             
       </Grid>
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() => console.log("Wow!")}
-        sx={{
-          position: 'fixed',
-          bottom: '1em',
-          right: '1em'
-        }}
-      >
-        <AddIcon />
-        New Fantasy Movie
-      </Fab>
+        <Link to={`/movies/fantasy/new`}>
+          <Fab
+            color="secondary"
+            variant="extended"
+            sx={{
+              position: 'fixed',
+              bottom: '1em',
+              right: '1em'
+            }}
+          >
+            <AddIcon />
+            New Fantasy Movie
+          </Fab>
+      </Link>
     </Grid>
     
   );
