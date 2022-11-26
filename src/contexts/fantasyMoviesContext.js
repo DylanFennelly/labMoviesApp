@@ -5,17 +5,21 @@ export const FantasyMoviesContext = React.createContext(null);
 const FantasyMoviesContextProvider = (props) => {
   const [fantasy, setFantasy] = useState( [] )
 
+  // const addToFantasyMovies = (fantasy) => {
+  //   let newFantasy = [...fantasy];
+  //   if (!fantasy.includes(fantasy.id)) {
+  //     newFantasy.push(fantasy.id);
+  //   }
+  //   setFantasy(newFantasy);
+  //   //console.log(newFavourites);
+  // };
+
   const addToFantasyMovies = (fantasy) => {
-    let newFantasy = [...fantasy];
-    if (!fantasy.includes(fantasy.id)) {
-      newFantasy.push(fantasy.id);
-    }
-    setFantasy(newFantasy);
-    //console.log(newFavourites);
+    setFantasy( {...fantasy } )
   };
 
   // We will use this function in a later section
-  const removeFromFantasy = (fantasy) => {
+  const removeFromFantasyMovies = (fantasy) => {
     setFantasy( fantasy.filter(
       (fId) => fId !== fantasy.id
     ) )
@@ -27,7 +31,7 @@ const FantasyMoviesContextProvider = (props) => {
       value={{
         fantasy,
         addToFantasyMovies,
-        removeFromFantasy
+        removeFromFantasyMovies
       }}
     >
       {props.children}
