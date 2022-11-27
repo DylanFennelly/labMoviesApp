@@ -81,12 +81,23 @@ const FantasyMovieForm = () => {
       };
     
       const onSubmit = (fantasy) => {
-        fantasy.id = 0;
+        let id = 0;
+        let idClear = false;
+        
+        while (!idClear){
+          if(context.fantasy.find(e => e.id === id) === undefined){
+            idClear = true;
+          }else{
+            id++;
+          }
+        }
+
+        fantasy.id = id
         fantasy.genres = selectedGenres;
         const reg = new RegExp("([0-9]{4})-([0-9]{2})-([0-9]{2})");
         if(reg.test(fantasy.release_date))
           if (fantasy.genres.length != 0){
-            console.log(fantasy)
+
             context.addToFantasyMovies(fantasy);
             setOpen(true); 
           }

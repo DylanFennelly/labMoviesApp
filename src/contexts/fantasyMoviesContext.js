@@ -14,8 +14,9 @@ const FantasyMoviesContextProvider = (props) => {
   //   //console.log(newFavourites);
   // };
 
-  const addToFantasyMovies = (fantasy) => {
-    setFantasy( {...fantasy } )
+  const addToFantasyMovies = (newFantasy) => {
+    fantasy.push(newFantasy)
+    // setFantasy( {...fantasy, newFantasy } )
   };
 
   // We will use this function in a later section
