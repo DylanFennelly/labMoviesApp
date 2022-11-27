@@ -40,7 +40,7 @@ const FantasyMovieForm = () => {
       const [open, setOpen] = React.useState(false);
       const [date, setDate] = React.useState(null);
 
-      console.warn = () => {};
+      console.error = console.warn = () => {};
 
       const { data, error, isLoading, isError } = useQuery("fantasyGenres", getGenres);
   
@@ -77,14 +77,19 @@ const FantasyMovieForm = () => {
     
       const handleSnackClose = (event) => {
         setOpen(false);
-        navigate("/movies/favourites");
+        navigate("/movies/fantasy");
       };
     
       const onSubmit = (fantasy) => {
-        // review.movieId = movie.id;
-        // review.rating = rating;
-        context.addToFantasyMovies(fantasy);
-        setOpen(true); 
+        fantasy.id = 0;
+        fantasy.genres = selectedGenres;
+        const reg = new RegExp("([0-9]{4})-([0-9]{2})-([0-9]{2})");
+        if(reg.test(fantasy.release_date))
+          if (fantasy.genres.length != 0){
+            console.log(fantasy)
+            context.addToFantasyMovies(fantasy);
+            setOpen(true); 
+          }
       };
 
       //updates the genre select box with latest selected genre
@@ -108,7 +113,7 @@ const FantasyMovieForm = () => {
               onClose={handleSnackClose}
             >
               <Typography variant="h4">
-                Thank you for submitting a review
+                Fantasy movie submitted!
               </Typography>
             </Alert>
           </Snackbar>
@@ -168,7 +173,7 @@ const FantasyMovieForm = () => {
             <div>
             <Controller
               control={control}
-              name="genre"
+              name="genres"
               render={({ field: { onChange, value } }) => (
                 <TextField
                   id="select-genre"
@@ -195,7 +200,7 @@ const FantasyMovieForm = () => {
              onClick={() => addToSelectedGenres(id)}>
               Add genre
             </Button>
-            {/* https://beta.reactjs.org/learn/updating-arrays-in-state */}
+             {/* https://beta.reactjs.org/learn/updating-arrays-in-state  */}
               {selectedGenres.map(genre => (
                 <Fab onClick={() => (
                   setSelectedGenres(
@@ -215,26 +220,30 @@ const FantasyMovieForm = () => {
             
             </div>
             <Controller
-              name="date"
+              name="release_date"
               control={control}
-              rules={{ required: "Release Date is required." }}
+              rules={{ required: "Date is required." }}
               defaultValue=""
               render={({ field: { onChange, value } }) => (
-                //https://mui.com/x/react-date-pickers/getting-started/
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    label="Select Date"
-                    id="date"
-                    value={date}
-                    onChange={(newDate) => {
-                      setDate(newDate);
-                      
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </LocalizationProvider>
+                <TextField
+                  sx={{ width: "40ch" }}
+                  variant="outlined"
+                  margin="normal"
+                  inputProps={{pattern: "([0-9]{4})\/([0-9]{2})\/([0-9]{2})"}}
+                  required
+                  onChange={onChange}
+                  value={value}
+                  id="date"
+                  label="Release Date (YYYY-MM-DD)"
+                  autoFocus
+                />
               )}
             />
+            {errors.date && (
+              <Typography variant="h6" component="p" style={{color: 'red'}}>
+                {errors.date.message}
+              </Typography>
+            )}
 
             <div>
             <Controller
@@ -281,8 +290,7 @@ const FantasyMovieForm = () => {
                 sx={styles.submit}
                 onClick={() => {
                   reset({
-                    author: "",
-                    content: "",
+                    
                   });
                 }}
               >

@@ -38,6 +38,7 @@ const ReviewForm = ({ movie }) => {
   const handleSnackClose = (event) => {
     setOpen(false);
     navigate("/movies/favourites");
+    console.log(context.myReviews)
   };
 
   const onSubmit = (review) => {
