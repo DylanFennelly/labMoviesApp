@@ -13,6 +13,9 @@ import Alert from "@mui/material/Alert";
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
+import AddIcon from '@mui/icons-material/Add';
+import Fab from "@mui/material/Fab";
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 
 const FantasyMovieForm = () => {
     const defaultValues = {
@@ -28,7 +31,8 @@ const FantasyMovieForm = () => {
       } = useForm(defaultValues);
       const navigate = useNavigate();
       const context = useContext(FantasyMoviesContext);
-      const [genre, setGenre] = useState( [] );
+      const [id, setId] = useState(0);
+      const [selectedGenres, setSelectedGenres] = useState( [] );
       const [open, setOpen] = React.useState(false);
 
       console.warn = () => {};
@@ -43,20 +47,25 @@ const FantasyMovieForm = () => {
         return <h1>{error.message}</h1>;
       }
       const genres = data.genres;
-    
-    
-      const handleGenreChange = (event) => {
-        //finds selected genre in genres array by finding the index of the coreesponding element based on the returned target value
-        const selectedGenre = genres[genres.indexOf(genres.find(e => e.id === event.target.value))]
-        //https://stackoverflow.com/questions/7364150/find-object-by-id-in-an-array-of-javascript-objects
-        //https://www.w3schools.com/jsref/jsref_indexof_array.asp
-        if (!genre.includes(selectedGenre)){
-          genre.push(selectedGenre)
+
+
+
+      //https://beta.reactjs.org/learn/updating-arrays-in-state
+      function addToSelectedGenres(id){
+        const elemMatch = genres[genres.indexOf(genres.find(e => e.id === parseInt(id)))]
+
+        let matchFound = false;
+        let i = 0;
+      
+        for (i = 0; i < selectedGenres.length; i++){
+          if (selectedGenres[i].id === elemMatch.id){
+            matchFound = true;
+          }
+        }    
+        if (!matchFound){
+          setSelectedGenres([...selectedGenres, elemMatch])
         }
-        
-        // console.log(event.target)
-        console.log(genre)
-      };
+      }
     
       const handleSnackClose = (event) => {
         setOpen(false);
@@ -148,7 +157,7 @@ const FantasyMovieForm = () => {
                 {errors.overview.message}
               </Typography>
             )}
-    
+            <div>
             <Controller
               control={control}
               name="genre"
@@ -158,19 +167,39 @@ const FantasyMovieForm = () => {
                   select
                   variant="outlined"
                   label="Genre Select"
-                  value={genreBoxName(genre)}
-                  onChange={handleGenreChange}
-                  helperText="Don't forget your rating"
+                  value={genreBoxName(selectedGenres)}
+                  onChange={e => setId(e.target.value)}
+                  helperText="Select one or more genres"
                 >
                   {genres.map((option) => (
                 <MenuItem key={option.id} value={option.id} >
                   {option.name}
                 </MenuItem>
-              ))}
+                ))}
+                
                 </TextField>
               )}
             />
-
+            {/* https://beta.reactjs.org/learn/updating-arrays-in-state */}
+              {selectedGenres.map(genre => (
+                <Fab onClick={() => (
+                  setSelectedGenres(
+                    selectedGenres.filter(g =>
+                      g.id !== genre.id)
+                  )
+                )}
+                color="secondary"
+                variant="extended"
+                 key={genre.id}
+                >
+                  <RemoveCircleIcon/>
+                  {genre.name}</Fab>
+             ))}
+            
+            </div>
+            <Button onClick={() => addToSelectedGenres(id)}>
+              Add genre
+            </Button>
     
             <Box sx={styles.buttons}>
               <Button
