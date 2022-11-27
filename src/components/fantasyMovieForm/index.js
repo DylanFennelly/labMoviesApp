@@ -16,6 +16,10 @@ import Spinner from '../spinner'
 import AddIcon from '@mui/icons-material/Add';
 import Fab from "@mui/material/Fab";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const FantasyMovieForm = () => {
     const defaultValues = {
@@ -34,6 +38,7 @@ const FantasyMovieForm = () => {
       const [id, setId] = useState(0);
       const [selectedGenres, setSelectedGenres] = useState( [] );
       const [open, setOpen] = React.useState(false);
+      const [date, setDate] = React.useState(null);
 
       console.warn = () => {};
 
@@ -209,6 +214,55 @@ const FantasyMovieForm = () => {
              ))}
             
             </div>
+            <Controller
+              name="date"
+              control={control}
+              rules={{ required: "Release Date is required." }}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                //https://mui.com/x/react-date-pickers/getting-started/
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    label="Select Date"
+                    id="date"
+                    value={date}
+                    onChange={(newDate) => {
+                      setDate(newDate);
+                      
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
+              )}
+            />
+
+            <div>
+            <Controller
+              name="company"
+              control={control}
+              rules={{ required: "Production company is required" }}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  sx={{ width: "40ch" }}
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  onChange={onChange}
+                  value={value}
+                  id="company"
+                  label="Production Company"
+                />
+              )}
+            />
+            {errors.company && (
+              <Typography variant="h6" component="p" style={{color: 'red'}}>
+                {errors.company.message}
+              </Typography>
+            )}
+            </div>
+            
+
             
     
             <Box sx={styles.buttons}>
