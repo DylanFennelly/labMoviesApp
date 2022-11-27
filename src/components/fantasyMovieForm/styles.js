@@ -22,6 +22,13 @@ const styles =  {
       "& > * ": {
         width: "100%",
       },
+    },
+    genre: {
+      marginLeft: 2,
+      marginTop: 1
+    },
+    fab: {
+      marginLeft: 1,
     }
   };
   export default styles

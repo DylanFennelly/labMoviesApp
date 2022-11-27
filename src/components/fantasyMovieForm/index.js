@@ -37,7 +37,7 @@ const FantasyMovieForm = () => {
 
       console.warn = () => {};
 
-      const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+      const { data, error, isLoading, isError } = useQuery("fantasyGenres", getGenres);
   
       if (isLoading) {
         return <Spinner />;
@@ -52,18 +52,21 @@ const FantasyMovieForm = () => {
 
       //https://beta.reactjs.org/learn/updating-arrays-in-state
       function addToSelectedGenres(id){
-        const elemMatch = genres[genres.indexOf(genres.find(e => e.id === parseInt(id)))]
+        //if id is 0, no genre has been selected
+        if(!(id===0)){
+          const elemMatch = genres[genres.indexOf(genres.find(e => e.id === parseInt(id)))]
 
-        let matchFound = false;
-        let i = 0;
-      
-        for (i = 0; i < selectedGenres.length; i++){
-          if (selectedGenres[i].id === elemMatch.id){
-            matchFound = true;
+          let matchFound = false;
+          let i = 0;
+        
+          for (i = 0; i < selectedGenres.length; i++){
+            if (selectedGenres[i].id === elemMatch.id){
+              matchFound = true;
+            }
+          }    
+          if (!matchFound){
+            setSelectedGenres([...selectedGenres, elemMatch])
           }
-        }    
-        if (!matchFound){
-          setSelectedGenres([...selectedGenres, elemMatch])
         }
       }
     
@@ -180,6 +183,13 @@ const FantasyMovieForm = () => {
                 </TextField>
               )}
             />
+            <Button
+             variant="contained"
+             color="primary"
+             sx={styles.genre}
+             onClick={() => addToSelectedGenres(id)}>
+              Add genre
+            </Button>
             {/* https://beta.reactjs.org/learn/updating-arrays-in-state */}
               {selectedGenres.map(genre => (
                 <Fab onClick={() => (
@@ -190,16 +200,16 @@ const FantasyMovieForm = () => {
                 )}
                 color="secondary"
                 variant="extended"
+                sx={styles.fab}
                  key={genre.id}
                 >
                   <RemoveCircleIcon/>
-                  {genre.name}</Fab>
+                  {genre.name}
+                </Fab>
              ))}
             
             </div>
-            <Button onClick={() => addToSelectedGenres(id)}>
-              Add genre
-            </Button>
+            
     
             <Box sx={styles.buttons}>
               <Button
