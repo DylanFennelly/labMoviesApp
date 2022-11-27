@@ -50,8 +50,8 @@ const TemplateMoviePage = ({ children }) => {
       </IconButton>
     </Paper>
 
-      <Grid container spacing={5} sx={{ padding: "15px" }}>
-        <Grid item xs={3}>
+      <Grid container sx={{ padding: "15px" }}>
+        <Grid item xs={1}>
           <div sx={{
             display: "flex",
             flexWrap: "wrap",
@@ -60,7 +60,7 @@ const TemplateMoviePage = ({ children }) => {
           </div>
         </Grid>
 
-        <Grid item xs={9}>
+        <Grid item xs={10}>
           {children}
         </Grid>
       </Grid>

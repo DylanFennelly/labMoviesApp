@@ -136,7 +136,7 @@ const ReviewForm = ({ movie }) => {
               helperText="Don't forget your rating"
             >
               {ratings.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
+                <MenuItem key={option.id} value={option.id}>
                   {option.label}
                 </MenuItem>
               ))}
