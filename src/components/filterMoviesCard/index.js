@@ -38,7 +38,6 @@ const formControl =
   
     const handleChange = (e, type, value) => {
       e.preventDefault();
-      console.log(e.target)
       props.onUserInput(type, value); // NEW
     };
   

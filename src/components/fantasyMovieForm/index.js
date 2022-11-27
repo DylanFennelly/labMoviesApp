@@ -8,9 +8,11 @@ import { useForm, Controller } from "react-hook-form";
 import { FantasyMoviesContext } from "../../contexts/fantasyMoviesContext";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles";
-import genres from "./genres";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import { getGenres } from "../../api/tmdb-api";
+import { useQuery } from "react-query";
+import Spinner from '../spinner'
 
 const FantasyMovieForm = () => {
     const defaultValues = {
@@ -30,6 +32,17 @@ const FantasyMovieForm = () => {
       const [open, setOpen] = React.useState(false);
 
       console.warn = () => {};
+
+      const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  
+      if (isLoading) {
+        return <Spinner />;
+      }
+    
+      if (isError) {
+        return <h1>{error.message}</h1>;
+      }
+      const genres = data.genres;
     
     
       const handleGenreChange = (event) => {
@@ -157,7 +170,7 @@ const FantasyMovieForm = () => {
                 </TextField>
               )}
             />
-            
+
     
             <Box sx={styles.buttons}>
               <Button
