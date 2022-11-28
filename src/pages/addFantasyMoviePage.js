@@ -21,7 +21,7 @@ const AddFantasyMoviePage = (props) => {
   //   return <h1>{error.message}</h1>;
   // }
   return (
-    <PageTemplate>
+    <PageTemplate movie={null}>
       <FantasyMovieForm />
     </PageTemplate>
   );

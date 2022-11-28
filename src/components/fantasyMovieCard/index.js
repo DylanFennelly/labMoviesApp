@@ -60,8 +60,7 @@ export default function FantasyMovieCard({ movie: fantasyMovie}) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        {/* {action(movie)} */}
-        <Link to={`/movies/${fantasyMovie.id}`}>
+        <Link to={`/movies/fantasy/${fantasyMovie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>

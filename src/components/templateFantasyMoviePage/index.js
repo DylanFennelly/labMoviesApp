@@ -1,5 +1,5 @@
 import React from "react";
-import MovieHeader from "../headerMovie";
+import FantasyMovieHeader from "../fantasyMovieHeader";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
 
-const TemplateMoviePage = ({ children }) => {
+const TemplateMoviePage = ({ movie, children }) => {
   const navigate = useNavigate();
 
   // if (isLoading) {
@@ -27,28 +27,7 @@ const TemplateMoviePage = ({ children }) => {
 
   return (
     <>
-      <Paper 
-        component="div" 
-        sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            padding: 1.5,
-            margin: 0,
-        }}
-      >
-      <IconButton aria-label="go back" onClick={() => navigate(-1)} >
-        <ArrowBackIcon color="primary" fontSize="large" />
-      </IconButton>
-
-      <Typography variant="h4" component="h3" align="center">
-        <b>Create a Fantasy Movie</b>
-      </Typography>
-
-      <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
-        <ArrowForwardIcon color="primary" fontSize="large" />
-      </IconButton>
-    </Paper>
+      <FantasyMovieHeader movie={movie}/>
 
       <Grid container sx={{ padding: "15px" }}>
         <Grid item xs={1}>
