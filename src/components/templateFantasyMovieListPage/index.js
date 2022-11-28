@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from "@mui/material/Fab";
 import { Link } from "react-router-dom";
 
-function FantasyMovieListPageTemplate({ movies, title, action }) {
+function FantasyMovieListPageTemplate({ movies, title}) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
@@ -38,7 +38,7 @@ function FantasyMovieListPageTemplate({ movies, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <FantasyMovieList action={action} movies={displayedMovies}></FantasyMovieList>
+        <FantasyMovieList movies={displayedMovies}></FantasyMovieList>
             
       </Grid>
         <Link to={`/movies/fantasy/new`}>

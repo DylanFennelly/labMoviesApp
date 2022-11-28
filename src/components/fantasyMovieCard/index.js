@@ -16,52 +16,23 @@ import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { MoviesContext } from "../../contexts/moviesContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import ListIcon from '@mui/icons-material/List';
 
-export default function FantasyMovieCard({ movie, action }) {
-  const { favourites, addToFavourites } = useContext(MoviesContext);
-  const { mustWatch, addToMustWatch } = useContext(MoviesContext);
- 
-   if (favourites.find((id) => id === movie.id)) {
-     movie.favourite = true;
-   } else {
-     movie.favourite = false
-   }
-
-   if (mustWatch.find((id) => id === movie.id)) {
-    movie.mustWatch = true;
-   }else{
-    movie.mustWatch = false;
-   }
- 
-   const handleAddToFavourite = (e) => {
-     e.preventDefault();
-     addToFavourites(movie);
-   };
+export default function FantasyMovieCard({ movie: fantasyMovie}) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        avatar={
-          movie.favourite ? (
-            <Avatar sx={{ backgroundColor: 'red' }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : movie.mustWatch ? (
-            <Avatar sx={{ backgroundColor: 'red' }}>
-              <PlaylistAddIcon />
-            </Avatar>
-          ) : null
-        }
         title={
           <Typography variant="h5" component="p">
-            {movie.title}{" "}
+            {fantasyMovie.title}{" "}
           </Typography>
         }
       />
       <CardMedia
         sx={{ height: 500 }}
         image={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+          fantasyMovie.poster_path
+            ? `https://image.tmdb.org/t/p/w500/${fantasyMovie.poster_path}`
             : img
         }
       />
@@ -70,20 +41,27 @@ export default function FantasyMovieCard({ movie, action }) {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {movie.release_date}
+              {fantasyMovie.release_date}
             </Typography>
           </Grid>
           <Grid item xs={6}>
-            <Typography variant="h6" component="p">
-              <StarRateIcon fontSize="small" />
-              {"  "} {movie.vote_average}{" "}
-            </Typography>
+          <Typography variant="h6" component="p">
+              <ListIcon fontSize="small" />
+              Genres
+              {fantasyMovie.genres.map(genre => (
+                <Typography>
+                  {genre.name}
+                  </Typography>
+              ))}
+          </Typography>
+              
+            
           </Grid>
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
         {/* {action(movie)} */}
-        <Link to={`/movies/${movie.id}`}>
+        <Link to={`/movies/${fantasyMovie.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>

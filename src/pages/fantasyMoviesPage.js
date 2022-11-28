@@ -14,9 +14,7 @@ const FantasyMoviesPage = (props) => {
     <PageTemplate
       title="Fantasy Movies"
       movies={movies}
-      action={(movie) => {
-        return <AddToFavouritesIcon movie={movie} />
-      }}
+      
     />
   );
 };
