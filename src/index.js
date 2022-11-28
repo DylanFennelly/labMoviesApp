@@ -26,6 +26,7 @@ import FavouriteActorsPage from "./pages/favouriteActorsPage";
 import FantasyMoviesPage from "./pages/fantasyMoviesPage"
 import FantasyMoviesContextProvider from "./contexts/fantasyMoviesContext";
 import AddFantasyMoviePage from "./pages/addFantasyMoviePage";
+import FantasyMovieDetailsPage from "./pages/fantasyMovieDetailsPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -65,6 +66,7 @@ const App = () => {
                   <Route path="/actors/favourites" element={<FavouriteActorsPage />} />
                   <Route path="/movies/fantasy" element={<FantasyMoviesPage/>} />
                   <Route path="/movies/fantasy/new" element={<AddFantasyMoviePage/>} />
+                  <Route path="/movies/fantasy/:id" element={<FantasyMovieDetailsPage/>} />
                 </Routes>
               </FantasyMoviesContextProvider>
             </ActorsContextProvider>

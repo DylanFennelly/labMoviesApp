@@ -1,14 +1,14 @@
 import React, {useContext} from "react";
 import { useParams } from 'react-router-dom';
-import FantasyMovieDetails from "../components/FantasyMovieDetails/";
+import FantasyMovieDetails from "../components/fantasyMovieDetails";
 import PageTemplate from "../components/templateFantasyMoviePage";
 import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
-import { FantasyMoviesContext } from "../../contexts/fantasyMoviesContext";
+import { FantasyMoviesContext } from "../contexts/fantasyMoviesContext";
 
 
-const MovieDetailsPage = (props) => {
+const FantasyMovieDetailsPage = (props) => {
   const { id } = useParams();
   const context = useContext(FantasyMoviesContext);
   const movie = context.fantasy[id]
@@ -21,4 +21,4 @@ const MovieDetailsPage = (props) => {
   );
 };
 
-export default MovieDetailsPage;
+export default FantasyMovieDetailsPage;

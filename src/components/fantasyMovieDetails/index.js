@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 
 
 const root = {
@@ -48,7 +49,10 @@ const FantasyMovieDetails = ({ movie }) => {
         ))}
       </Paper>
       <Paper component="ul" sx={root}>
-        <Chip label={`Released: ${movie.release_date}`} />
+      
+        <Chip 
+        icon={<CalendarIcon fontSize="small" />}
+        label={`Released: ${movie.release_date}`} />
       </Paper>
       <Paper 
         component="ul" 
