@@ -16,10 +16,6 @@ import Spinner from '../spinner'
 import AddIcon from '@mui/icons-material/Add';
 import Fab from "@mui/material/Fab";
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { ConstructionOutlined } from "@mui/icons-material";
 
 const FantasyMovieForm = () => {
     const defaultValues = {
