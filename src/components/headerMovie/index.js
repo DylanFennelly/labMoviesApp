@@ -1,4 +1,4 @@
-import React from "react";
+import React,  { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
@@ -7,10 +7,23 @@ import Typography from "@mui/material/Typography";
 import HomeIcon from "@mui/icons-material/Home";
 import { useNavigate } from "react-router-dom";
 import AddToFavouritesIcon from "../cardIcons/addToFavourites";
+import RemoveFromFavouritesIcon from "../cardIcons/removeFromFavourites"
+
+import { MoviesContext } from "../../contexts/moviesContext";
 
 const MovieHeader = (props) => {
   const movie = props.movie;
   const navigate = useNavigate();
+  const context = useContext(MoviesContext);
+
+  //changes icon and function depending on favourites state of movie
+  function favouritesState(movie){
+    if (!context.favourites.includes(movie.id)) {
+      return <AddToFavouritesIcon movie={movie} />
+    }else{
+      return <RemoveFromFavouritesIcon movie={movie} />
+    }
+  }
 
   return (
     <Paper 
@@ -36,7 +49,7 @@ const MovieHeader = (props) => {
         <span sx={{ fontSize: "1.5rem" }}>{`   "${movie.tagline}"`} </span>
       </Typography>
 
-      <AddToFavouritesIcon movie={movie} />
+      {favouritesState(movie)}
       <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>

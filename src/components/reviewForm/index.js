@@ -38,6 +38,7 @@ const ReviewForm = ({ movie }) => {
   const handleSnackClose = (event) => {
     setOpen(false);
     navigate("/movies/favourites");
+    console.log(context.myReviews)
   };
 
   const onSubmit = (review) => {
@@ -136,7 +137,7 @@ const ReviewForm = ({ movie }) => {
               helperText="Don't forget your rating"
             >
               {ratings.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
+                <MenuItem key={option.id} value={option.id}>
                   {option.label}
                 </MenuItem>
               ))}

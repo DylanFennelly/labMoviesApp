@@ -1,19 +1,20 @@
-//needed to resolve issue with "known_for" movies not being obtainable data for the actorsDetails api query
-
 import React, { useState } from "react";
 import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
-import ActorList from "../favouriteActorList";
+import FantasyMovieList from "../fantasyMovieList";
 import Grid from "@mui/material/Grid";
+import AddIcon from '@mui/icons-material/Add';
+import Fab from "@mui/material/Fab";
+import { Link } from "react-router-dom";
 
-function FavouriteActorListPageTemplate({ actors, title, action }) {
+function FantasyMovieListPageTemplate({ movies, title}) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const genreId = Number(genreFilter);
 
-   let displayedActors = actors
+  let displayedMovies = movies
     .filter((m) => {
-      return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+      return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
@@ -37,9 +38,25 @@ function FavouriteActorListPageTemplate({ actors, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <ActorList action={action} actors={displayedActors}></ActorList>      
+        <FantasyMovieList movies={displayedMovies}></FantasyMovieList>
+            
       </Grid>
+        <Link to={`/movies/fantasy/new`}>
+          <Fab
+            color="secondary"
+            variant="extended"
+            sx={{
+              position: 'fixed',
+              bottom: '1em',
+              right: '1em'
+            }}
+          >
+            <AddIcon />
+            New Fantasy Movie
+          </Fab>
+      </Link>
     </Grid>
+    
   );
 }
-export default FavouriteActorListPageTemplate;
+export default FantasyMovieListPageTemplate;

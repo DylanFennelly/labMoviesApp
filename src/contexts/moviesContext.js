@@ -13,7 +13,7 @@ const MoviesContextProvider = (props) => {
       newFavourites.push(movie.id);
     }
     setFavourites(newFavourites);
-    console.log(newFavourites);
+    //console.log(newFavourites);
   };
 
   // We will use this function in a later section
@@ -33,7 +33,7 @@ const MoviesContextProvider = (props) => {
       newMustWatch.push(movie.id);
     }
     setMustWatch(newMustWatch);
-    console.log(newMustWatch)
+    //console.log(newMustWatch)
   };
 
   const removeFromMustWatch = (movie) => {
@@ -52,7 +52,8 @@ const MoviesContextProvider = (props) => {
         addReview,
         addToMustWatch,
         mustWatch,
-        removeFromMustWatch
+        removeFromMustWatch,
+        myReviews
       }}
     >
       {props.children}

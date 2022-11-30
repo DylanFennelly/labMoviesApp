@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
@@ -37,6 +38,7 @@ const SiteHeader = ({ history }) => {
     { label: "Top Rated", path: "/movies/top" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "My Fantasy Movies", path: "/movies/fantasy"}
   ]
 
   const TVOptions = [
@@ -55,6 +57,7 @@ const SiteHeader = ({ history }) => {
     { label: "Top Rated", path: "/movies/top" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
+    { label: "My Fantasy Movies", path: "/movies/fantasy"},
     { label: "TV Series", path: "/tv" },
     { label: "TV Favourites", path: "/tv/favourites" },
     { label: "Popular Actors", path: "/actors" },
