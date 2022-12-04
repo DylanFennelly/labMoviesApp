@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import FilterCard from "../filterMoviesCard";
+import FilterCard from "../filterFantasyMoviesCard";
 import FantasyMovieList from "../fantasyMovieList";
 import Grid from "@mui/material/Grid";
 import AddIcon from '@mui/icons-material/Add';
@@ -17,7 +17,7 @@ function FantasyMovieListPageTemplate({ movies, title}) {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
-      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
+      return genreId > 0 ? m.genres.filter(e => e.id === genreId).length > 0 : true;  //from: https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
     });
 
   const handleChange = (type, value) => {

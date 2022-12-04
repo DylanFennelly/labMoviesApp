@@ -7,21 +7,33 @@ import Grid from "@mui/material/Grid";
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
+  const [ratingFilter, setRatingFilter] = useState(0);
+  const [languageFilter, setLanguageFilter] = useState("All")
   const genreId = Number(genreFilter);
 
+  console.log(movies)
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
-    });
+    })
+    .filter((m) => {
+      return m.vote_average >= ratingFilter;
+    })
+    .filter((m) => {
+      return languageFilter !== "All" ? m.original_language === languageFilter : true;
+    })
 
   const handleChange = (type, value) => {
-    if (type === "name") setNameFilter(value);
+    if (type === "name") setNameFilter(value)
+    else if (type === "rating") setRatingFilter(value)
+    else if (type === "language") setLanguageFilter(value)
     else setGenreFilter(value);
   };
 
+  console.log(displayedMovies)
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>

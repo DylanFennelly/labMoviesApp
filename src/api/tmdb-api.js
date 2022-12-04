@@ -104,7 +104,7 @@ export const getMovie = (args) => {
 
   export const getDiscoverTV = () => {
     return fetch(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&page=1`
     ).then((response) => {
       if (!response.ok) {
         throw new Error(response.json().message);
@@ -203,6 +203,22 @@ export const getMovie = (args) => {
       }
       return response.json();
   
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+
+  export const getTVGenres = async () => {
+    return fetch(
+      "https://api.themoviedb.org/3/genre/tv/list?api_key=" +
+        process.env.REACT_APP_TMDB_KEY +
+        "&language=en-US"
+    ).then( (response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
     })
     .catch((error) => {
       throw error

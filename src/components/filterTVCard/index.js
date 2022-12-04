@@ -9,8 +9,8 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import img from '../../images/movieFilter.jpg'
-import { getGenres } from "../../api/tmdb-api";
+import img from '../../images/tvFilter.jpg'
+import { getTVGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
@@ -22,7 +22,7 @@ const formControl =
   };
 
   export default function FilterMoviesCard(props) {
-    const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+    const { data, error, isLoading, isError } = useQuery("tvGenres", getTVGenres);
   
     if (isLoading) {
       return <Spinner />;
@@ -67,12 +67,12 @@ const formControl =
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          Filter TV series.
         </Typography>
         <TextField
           sx={formControl}
           id="filled-search"
-          label="Title"
+          label="Name"
           type="search"
           variant="filled"
           value={props.titleFilter}
@@ -145,7 +145,7 @@ const formControl =
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />
-          Filter the movies.
+          Filter TV series.
           <br />
         </Typography>
       </CardContent>
