@@ -47,10 +47,6 @@ export default function ActorCard({ actor, action }) {
     }
   }
 
-  const handleAddToFavourite = (e) => {
-    e.preventDefault();
-    addToFavourites(actor);
-  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
