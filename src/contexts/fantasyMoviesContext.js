@@ -6,6 +6,7 @@ const FantasyMoviesContextProvider = (props) => {
   const [fantasy, setFantasy] = useState([])
 
   const addToFantasyMovies = (newFantasy) => {
+    fantasy.push(newFantasy)
   };
 
   // We will use this function in a later section
