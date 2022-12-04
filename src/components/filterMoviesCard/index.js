@@ -53,6 +53,10 @@ const formControl =
       handleChange(e, "rating", e.target.value);
     };
 
+    const handleLanguageChange = (e) => {
+      handleChange(e, "language", e.target.value);
+    };
+
   return (
     <Card 
       sx={{
@@ -111,6 +115,25 @@ const formControl =
            <MenuItem value={2}>2</MenuItem>
            <MenuItem value={1}>1</MenuItem>
            <MenuItem value={0}>0</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl sx={formControl}>
+          <InputLabel id="language-label">Original Language</InputLabel>
+          <Select
+            labelId="language-label"
+            id="language-select"
+            defaultValue=""
+            value={props.languageFilter}
+            onChange={handleLanguageChange}
+          >
+           <MenuItem value={"All"}>All</MenuItem>
+           <MenuItem value={"en"}>English</MenuItem>
+           <MenuItem value={"es"}>Spanish</MenuItem>
+           <MenuItem value={"fr"}>French</MenuItem>
+           <MenuItem value={"de"}>German</MenuItem>
+           <MenuItem value={"it"}>Italian</MenuItem>
+           <MenuItem value={"ja"}>Japanese</MenuItem>
+           <MenuItem value={"ko"}>Korean</MenuItem>
           </Select>
         </FormControl>
       </CardContent>
