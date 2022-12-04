@@ -1,4 +1,4 @@
-import React,  { useContext } from "react";
+import React, { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
@@ -17,25 +17,25 @@ const MovieHeader = (props) => {
   const context = useContext(MoviesContext);
 
   //changes icon and function depending on favourites state of movie
-  function favouritesState(movie){
+  function favouritesState(movie) {
     if (!context.favourites.includes(movie.id)) {
       return <AddToFavouritesIcon movie={movie} />
-    }else{
+    } else {
       return <RemoveFromFavouritesIcon movie={movie} />
     }
   }
 
   return (
-    <Paper 
-        component="div" 
-        sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            padding: 1.5,
-            margin: 0,
-        }}
-      >
+    <Paper
+      component="div"
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
+        padding: 1.5,
+        margin: 0,
+      }}
+    >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
@@ -50,7 +50,7 @@ const MovieHeader = (props) => {
       </Typography>
 
       {favouritesState(movie)}
-      <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
+      <IconButton aria-label="go forward" onClick={() => navigate(+1)} >
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>

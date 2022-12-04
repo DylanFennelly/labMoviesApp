@@ -7,7 +7,7 @@ import Spinner from '../components/spinner';
 import RemoveFromActorFavourites from "../components/cardIcons/removeFromActorFavourites";
 
 const FavouriteActorsPage = () => {
-  const {favourites: actorIds } = useContext(ActorContext);
+  const { favourites: actorIds } = useContext(ActorContext);
 
   // Create an array of queries and run in parallel.
   const favouriteActorQueries = useQueries(

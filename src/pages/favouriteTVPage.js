@@ -5,10 +5,9 @@ import { useQueries } from "react-query";
 import { getTV } from "../api/tmdb-api";
 import Spinner from '../components/spinner';
 import RemoveFromTVFavourites from "../components/cardIcons/removeFromTVFavourites";
-import WriteReview from "../components/cardIcons/writeReview";
 
 const FavouriteTVPage = () => {
-  const {favourites: tvIds } = useContext(TVContext);
+  const { favourites: tvIds } = useContext(TVContext);
 
   // Create an array of queries and run in parallel.
   const favouriteTVQueries = useQueries(

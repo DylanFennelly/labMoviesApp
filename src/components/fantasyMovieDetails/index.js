@@ -1,29 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
-import StarRate from "@mui/icons-material/StarRate";
-import NavigationIcon from "@mui/icons-material/Navigation";
-import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
-import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 
 
 const root = {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    listStyle: "none",
-    padding: 1.5,
-    margin: 0,
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  listStyle: "none",
+  padding: 1.5,
+  margin: 0,
 };
 const chip = { margin: 0.5 };
 
-const FantasyMovieDetails = ({ movie }) => { 
-  const [drawerOpen, setDrawerOpen] = useState(false);
+const FantasyMovieDetails = ({ movie }) => {
 
   return (
     <>
@@ -35,8 +27,8 @@ const FantasyMovieDetails = ({ movie }) => {
         {movie.overview}
       </Typography>
 
-      <Paper 
-        component="ul" 
+      <Paper
+        component="ul"
         sx={root}
       >
         <li>
@@ -49,22 +41,36 @@ const FantasyMovieDetails = ({ movie }) => {
         ))}
       </Paper>
       <Paper component="ul" sx={root}>
-      
-        <Chip 
-        icon={<CalendarIcon fontSize="small" />}
-        label={`Released: ${movie.release_date}`} />
+
+        <Chip
+          icon={<CalendarIcon fontSize="small" />}
+          label={`Released: ${movie.release_date}`} />
       </Paper>
-      <Paper 
-        component="ul" 
+      <Paper
+        component="ul"
+        sx={root}
+      >
+        <li>
+          <Chip label="Cast" sx={chip} color="primary" />
+        </li>
+        {movie.actors.map((g) => (
+          <li key={g.name}>
+            <Chip label={g.name} sx={chip} />
+          </li>
+        ))}
+
+      </Paper>
+      <Paper
+        component="ul"
         sx={root}
       >
         <li>
           <Chip label="Production Company" sx={chip} color="primary" />
         </li>
-            <Chip label={movie.company} sx={chip} />
+        <Chip label={movie.company} sx={chip} />
 
       </Paper>
-      </>
+    </>
   );
 };
-export default FantasyMovieDetails ;
+export default FantasyMovieDetails;

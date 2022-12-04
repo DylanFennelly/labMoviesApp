@@ -11,7 +11,7 @@ function TVListPageTemplate({ tvs, title, action }) {
   const [languageFilter, setLanguageFilter] = useState("All")
   const genreId = Number(genreFilter);
 
-   let displayedTVs = tvs
+  let displayedTVs = tvs
     .filter((m) => {
       return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
@@ -45,7 +45,7 @@ function TVListPageTemplate({ tvs, title, action }) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <TVList action={action} tvs={displayedTVs}></TVList>      
+        <TVList action={action} tvs={displayedTVs}></TVList>
       </Grid>
     </Grid>
   );

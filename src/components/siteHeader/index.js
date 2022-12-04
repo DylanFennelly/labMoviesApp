@@ -20,7 +20,7 @@ const SiteHeader = ({ history }) => {
   const [anchorTV, setAnchorTV] = useState(null);
   const [anchorActor, setAnchorActor] = useState(null);
   const [anchorMobile, setAnchorMobile] = useState(null);
-  
+
   const openMovie = Boolean(anchorMovie);
   const openTV = Boolean(anchorTV);
   const openActor = Boolean(anchorActor);
@@ -38,7 +38,7 @@ const SiteHeader = ({ history }) => {
     { label: "Top Rated", path: "/movies/top" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
-    { label: "My Fantasy Movies", path: "/movies/fantasy"}
+    { label: "My Fantasy Movies", path: "/movies/fantasy" }
   ]
 
   const TVOptions = [
@@ -57,7 +57,7 @@ const SiteHeader = ({ history }) => {
     { label: "Top Rated", path: "/movies/top" },
     { label: "Favourites", path: "/movies/favourites" },
     { label: "Must Watch", path: "/movies/mustwatch" },
-    { label: "My Fantasy Movies", path: "/movies/fantasy"},
+    { label: "My Fantasy Movies", path: "/movies/fantasy" },
     { label: "TV Series", path: "/tv" },
     { label: "TV Favourites", path: "/tv/favourites" },
     { label: "Popular Actors", path: "/actors" },
@@ -94,74 +94,74 @@ const SiteHeader = ({ history }) => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             All you ever wanted to know about Movies, TV and more!
           </Typography>
-            {isMobile ? (
-              <>
-                <IconButton
-                  aria-label="menu-mobile"
-                  aria-controls="menu-mobile-appbar"
-                  aria-haspopup="true"
-                  onClick={handleMobileMenu}
-                  color="inherit"
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-mobile-appbar"
-                  anchorEl={anchorMobile}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={openMobile}
-                  onClose={() => setAnchorMobile(null)}
-                >
-                  {mobileOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <>
+          {isMobile ? (
+            <>
+              <IconButton
+                aria-label="menu-mobile"
+                aria-controls="menu-mobile-appbar"
+                aria-haspopup="true"
+                onClick={handleMobileMenu}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-mobile-appbar"
+                anchorEl={anchorMobile}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={openMobile}
+                onClose={() => setAnchorMobile(null)}
+              >
+                {mobileOptions.map((opt) => (
+                  <MenuItem
+                    key={opt.label}
+                    onClick={() => handleMenuSelect(opt.path)}
+                  >
+                    {opt.label}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <>
               <Button
                 id="movie-menu"
                 aria-controls="movie-menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMovieMenu}
                 color="inherit">
-                  Movies
+                Movies
               </Button>
               <Menu
-              id="movie-menu-appbar"
-              anchorEl={anchorMovie}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={openMovie}
-              onClose={() => setAnchorMovie(null)}>
+                id="movie-menu-appbar"
+                anchorEl={anchorMovie}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={openMovie}
+                onClose={() => setAnchorMovie(null)}>
                 {movieOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
+                  <MenuItem
+                    key={opt.label}
+                    onClick={() => handleMenuSelect(opt.path)}
+                  >
+                    {opt.label}
+                  </MenuItem>
+                ))}
               </Menu>
               <Button
                 id="tv-menu"
@@ -169,30 +169,30 @@ const SiteHeader = ({ history }) => {
                 aria-haspopup="true"
                 onClick={handleMenuTV}
                 color="inherit">
-                  TV
+                TV
               </Button>
               <Menu
-              id="tv-menu-appbar"
-              anchorEl={anchorTV}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={openTV}
-              onClose={() => setAnchorTV(null)}>
+                id="tv-menu-appbar"
+                anchorEl={anchorTV}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={openTV}
+                onClose={() => setAnchorTV(null)}>
                 {TVOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
+                  <MenuItem
+                    key={opt.label}
+                    onClick={() => handleMenuSelect(opt.path)}
+                  >
+                    {opt.label}
+                  </MenuItem>
+                ))}
               </Menu>
               <Button
                 id="actor-menu"
@@ -200,33 +200,33 @@ const SiteHeader = ({ history }) => {
                 aria-haspopup="true"
                 onClick={handleMenuActor}
                 color="inherit">
-                  Actors
+                Actors
               </Button>
               <Menu
-              id="actor-menu-appbar"
-              anchorEl={anchorActor}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={openActor}
-              onClose={() => setAnchorActor(null)}>
+                id="actor-menu-appbar"
+                anchorEl={anchorActor}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={openActor}
+                onClose={() => setAnchorActor(null)}>
                 {ActorOptions.map((opt) => (
-                    <MenuItem
-                      key={opt.label}
-                      onClick={() => handleMenuSelect(opt.path)}
-                    >
-                      {opt.label}
-                    </MenuItem>
-                  ))}
+                  <MenuItem
+                    key={opt.label}
+                    onClick={() => handleMenuSelect(opt.path)}
+                  >
+                    {opt.label}
+                  </MenuItem>
+                ))}
               </Menu>
-              </>
-            )}
+            </>
+          )}
         </Toolbar>
       </AppBar>
       <Offset />

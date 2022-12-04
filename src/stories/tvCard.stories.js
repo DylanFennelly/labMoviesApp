@@ -3,7 +3,6 @@ import TVCard from "../components/tvCard";
 import SampleTV from "./sampleTVData";
 import { MemoryRouter } from "react-router";
 import TVContextProvider from "../contexts/tvContext";
-import { action } from "@storybook/addon-actions";
 import AddToTVFavouritesIcon from "../components/cardIcons/addToTVFavourites";
 
 export default {

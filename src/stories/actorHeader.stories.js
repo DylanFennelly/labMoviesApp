@@ -2,7 +2,6 @@ import React from "react";
 import ActorHeader from "../components/headerActor";
 import Sampleactor from "./sampleActorData";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
 import ActorContextProvider from "../contexts/actorsContext";
 
 export default {

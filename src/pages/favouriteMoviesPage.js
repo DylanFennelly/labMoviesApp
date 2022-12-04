@@ -8,7 +8,7 @@ import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
 
 const FavouriteMoviesPage = () => {
-  const {favourites: movieIds } = useContext(MoviesContext);
+  const { favourites: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
   const favouriteMovieQueries = useQueries(
@@ -26,7 +26,7 @@ const FavouriteMoviesPage = () => {
     return <Spinner />;
   }
 
-  const movies = favouriteMovieQueries.map((q) => { 
+  const movies = favouriteMovieQueries.map((q) => {
     q.data.genre_ids = q.data.genres.map(g => g.id)
     return q.data
   });

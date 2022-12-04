@@ -1,6 +1,6 @@
 //version of actorCard without "known for" list, for favourites page
 
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,9 +9,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
-import StarRateIcon from "@mui/icons-material/StarRate";
-import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
@@ -19,34 +16,33 @@ import Avatar from '@mui/material/Avatar';
 import { ActorContext } from "../../contexts/actorsContext";
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import WcIcon from '@mui/icons-material/Wc';
-import Divider from '@mui/material/Divider';
 
 export default function FavouriteActorCard({ actor, action }) {
   const { favourites, addToFavourites } = useContext(ActorContext);
-  const { mustWatch, addToMustWatch } = useContext(ActorContext);
- 
-   if (favourites.find((id) => id === actor.id)) {
-     actor.favourite = true;
-   } else {
-     actor.favourite = false
-   }
 
-   //gender is stored as number value, 1 for female and 2 for male. This translates that number value into a string value
-   (actor.gender === 1) ? actor.gender = "  Female" : actor.gender = "  Male"
+  if (favourites.find((id) => id === actor.id)) {
+    actor.favourite = true;
+  } else {
+    actor.favourite = false
+  }
 
-   //since "title" is used for movies and "name" for tv series, check media_type of known_for entry and return proper naming for each
-   function handleMediaType(med){
-    if (med.media_type === "movie"){
-        return med.title
-    }else{
-        return med.name
+  //gender is stored as number value, 1 for female and 2 for male. This translates that number value into a string value
+  let gender;
+  (actor.gender === 1) ? gender = "  Female" : gender = "  Male"
+
+  //since "title" is used for movies and "name" for tv series, check media_type of known_for entry and return proper naming for each
+  function handleMediaType(med) {
+    if (med.media_type === "movie") {
+      return med.title
+    } else {
+      return med.name
     }
-   }
- 
-   const handleAddToFavourite = (e) => {
-     e.preventDefault();
-     addToFavourites(actor);
-   };
+  }
+
+  const handleAddToFavourite = (e) => {
+    e.preventDefault();
+    addToFavourites(actor);
+  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -79,8 +75,8 @@ export default function FavouriteActorCard({ actor, action }) {
         <Grid container>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
-              <WcIcon/>
-              {actor.gender}
+              <WcIcon />
+              {gender}
             </Typography>
           </Grid>
         </Grid>

@@ -8,9 +8,9 @@ function ActorListPageTemplate({ actors, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genderFilter, setGenderFilter] = useState(0);
 
-  console.warn = () => {};
+  console.warn = () => { };
 
-   let displayedActors = actors
+  let displayedActors = actors
     .filter((m) => {
       return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
@@ -35,7 +35,7 @@ function ActorListPageTemplate({ actors, title, action }) {
             titleFilter={nameFilter}
           />
         </Grid>
-        <ActorList action={action} actors={displayedActors}></ActorList>      
+        <ActorList action={action} actors={displayedActors}></ActorList>
       </Grid>
     </Grid>
   );

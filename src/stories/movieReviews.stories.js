@@ -2,7 +2,6 @@ import React from "react";
 import MovieReviews from "../components/movieReviews";
 import { MemoryRouter } from "react-router";
 import SampleMovie from "./sampleData";
-import { action } from "@storybook/addon-actions";
 import MoviesContextProvider from "../contexts/moviesContext";
 
 export default {

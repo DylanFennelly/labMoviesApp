@@ -2,7 +2,6 @@ import React from "react";
 import FavouriteActorList from "../components/favouriteActorList";
 import SampleActor from "./sampleActorData";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
 import AddToActorFavouritesIcon from "../components/cardIcons/addToActorFavourites";
 import Grid from "@mui/material/Grid";
 import ActorContextProvider from "../contexts/actorsContext";

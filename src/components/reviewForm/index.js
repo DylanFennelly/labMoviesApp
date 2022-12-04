@@ -38,14 +38,13 @@ const ReviewForm = ({ movie }) => {
   const handleSnackClose = (event) => {
     setOpen(false);
     navigate("/movies/favourites");
-    console.log(context.myReviews)
   };
 
   const onSubmit = (review) => {
     review.movieId = movie.id;
     review.rating = rating;
     context.addReview(movie, review);
-    setOpen(true); 
+    setOpen(true);
   };
 
   return (

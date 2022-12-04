@@ -10,40 +10,37 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/actorFilter.jpeg'
-import { getGenres } from "../../api/tmdb-api";
-import { useQuery } from "react-query";
-import Spinner from '../spinner'
 
-const formControl = 
-  {
-    margin: 1,
-    minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)"
+const formControl =
+{
+  margin: 1,
+  minWidth: 220,
+  backgroundColor: "rgb(255, 255, 255)"
+};
+
+
+
+export default function FilterActorsCard(props) {
+  console.warn = () => { };
+  const handleChange = (e, type, value) => {
+    e.preventDefault();
+    props.onUserInput(type, value);
   };
 
-  
+  const handleTextChange = (e, props) => {
+    handleChange(e, "name", e.target.value);
+  };
 
-  export default function FilterActorsCard(props) {
-    console.warn = () => {};
-    const handleChange = (e, type, value) => {
-      e.preventDefault();
-      props.onUserInput(type, value); // NEW
-    };
-  
-    const handleTextChange = (e, props) => {
-      handleChange(e, "name", e.target.value);
-    };
-  
-    const handleGenderChange = (e) => {
-      handleChange(e, "gender", e.target.value);
-    };
+  const handleGenderChange = (e) => {
+    handleChange(e, "gender", e.target.value);
+  };
 
   return (
-    <Card 
+    <Card
       sx={{
         maxWidth: 345,
         backgroundColor: "rgb(204, 204, 0)"
-      }} 
+      }}
       variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">
@@ -68,9 +65,9 @@ const formControl =
             value={props.genderFilter}
             onChange={handleGenderChange}
           >
-           <MenuItem value={0}>Both</MenuItem>
-           <MenuItem value={1}>Female</MenuItem>
-           <MenuItem value={2}>Male</MenuItem>
+            <MenuItem value={0}>Both</MenuItem>
+            <MenuItem value={1}>Female</MenuItem>
+            <MenuItem value={2}>Male</MenuItem>
           </Select>
         </FormControl>
       </CardContent>
