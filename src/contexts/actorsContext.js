@@ -4,16 +4,25 @@ export const ActorContext = React.createContext(null);
 
 const ActorContextProvider = (props) => {
   const [favourites, setFavourites] = useState( [] )
+  //for displaying in fantasyMovie with name
+  const [favouritesWithNames, setFavouritesWithNames] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} ) 
   const [mustWatch, setMustWatch] = useState( [] )
 
   const addToFavourites = (actor) => {
     let newFavourites = [...favourites];
+    let newFavouritesWithName = [...favouritesWithNames]
     if (!favourites.includes(actor.id)) {
       newFavourites.push(actor.id);
+      newFavouritesWithName.push({
+        id: actor.id,
+        name: actor.name
+      })
     }
     setFavourites(newFavourites);
+    setFavouritesWithNames(newFavouritesWithName)
     console.log(newFavourites);
+    console.log(newFavouritesWithName)
   };
 
   // We will use this function in a later section
@@ -21,6 +30,16 @@ const ActorContextProvider = (props) => {
     setFavourites( favourites.filter(
       (tId) => tId !== actor.id
     ) )
+
+    const i = favouritesWithNames.findIndex (a => a.id === actor.id);
+    console.log(i)
+    if (i > -1){
+      favouritesWithNames.splice(i, 1)
+      setFavouritesWithNames(favouritesWithNames)
+    }
+
+    console.log(favourites);
+    console.log(favouritesWithNames)
   };
 
   const addReview = (actor, review) => {
