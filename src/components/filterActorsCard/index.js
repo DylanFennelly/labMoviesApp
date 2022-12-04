@@ -38,14 +38,6 @@ const formControl =
       handleChange(e, "gender", e.target.value);
     };
 
-    const handleRatingChange = (e) => {
-      handleChange(e, "rating", e.target.value);
-    };
-
-    const handleLanguageChange = (e) => {
-      handleChange(e, "language", e.target.value);
-    };
-
   return (
     <Card 
       sx={{
@@ -61,7 +53,7 @@ const formControl =
         <TextField
           sx={formControl}
           id="filled-search"
-          label="Search field"
+          label="Name"
           type="search"
           variant="filled"
           value={props.nameFilter}

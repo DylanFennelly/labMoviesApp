@@ -72,7 +72,7 @@ const formControl =
         <TextField
           sx={formControl}
           id="filled-search"
-          label="Search field"
+          label="Name"
           type="search"
           variant="filled"
           value={props.titleFilter}

@@ -97,6 +97,8 @@ const FantasyMovieForm = () => {
             context.addToFantasyMovies(fantasy);
             setOpen(true); 
           }
+
+          console.log(fantasy)
       };
 
       //updates the genre select box with latest selected genre

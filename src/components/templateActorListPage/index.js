@@ -15,8 +15,6 @@ function ActorListPageTemplate({ actors, title, action }) {
       return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
-      console.log(m.gender)
-      console.log(m.gender === genderFilter)
       return genderFilter > 0 ? m.gender === genderFilter : true;
     })
 
