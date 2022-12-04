@@ -71,7 +71,8 @@ const ActorContextProvider = (props) => {
         addReview,
         addToMustWatch,
         mustWatch,
-        removeFromMustWatch
+        removeFromMustWatch,
+        favouritesWithNames
       }}
     >
       {props.children}

@@ -59,6 +59,20 @@ const FantasyMovieDetails = ({ movie }) => {
         sx={root}
       >
         <li>
+          <Chip label="Cast" sx={chip} color="primary" />
+        </li>
+        {movie.actors.map((g) => (
+          <li key={g.name}>
+            <Chip label={g.name} sx={chip} />
+          </li>
+        ))}
+
+      </Paper>
+      <Paper 
+        component="ul" 
+        sx={root}
+      >
+        <li>
           <Chip label="Production Company" sx={chip} color="primary" />
         </li>
             <Chip label={movie.company} sx={chip} />
