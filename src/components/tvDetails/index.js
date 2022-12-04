@@ -1,8 +1,7 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import MonetizationIcon from "@mui/icons-material/MonetizationOn";
 import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
@@ -17,16 +16,16 @@ import TVReviews from "../tvReviews"
 
 
 const root = {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    listStyle: "none",
-    padding: 1.5,
-    margin: 0,
+  display: "flex",
+  justifyContent: "center",
+  flexWrap: "wrap",
+  listStyle: "none",
+  padding: 1.5,
+  margin: 0,
 };
 const chip = { margin: 0.5 };
 
-const TVDetails = ({ tv }) => { 
+const TVDetails = ({ tv }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -39,8 +38,8 @@ const TVDetails = ({ tv }) => {
         {tv.overview}
       </Typography>
 
-      <Paper 
-        component="ul" 
+      <Paper
+        component="ul"
         sx={root}
       >
         <li>
@@ -68,12 +67,12 @@ const TVDetails = ({ tv }) => {
         />
       </Paper>
       <Paper component="ul" sx={root}>
-        <Chip icon={<TvIcon/>} label={`Status: ${tv.status}`} />
-        <Chip icon={<TodayIcon/>} label={`First Aired: ${tv.first_air_date}`} />
-        <Chip icon={<EventIcon/>} label={`Last Aired: ${tv.last_air_date}`} />
+        <Chip icon={<TvIcon />} label={`Status: ${tv.status}`} />
+        <Chip icon={<TodayIcon />} label={`First Aired: ${tv.first_air_date}`} />
+        <Chip icon={<EventIcon />} label={`Last Aired: ${tv.last_air_date}`} />
       </Paper>
-      <Paper 
-        component="ul" 
+      <Paper
+        component="ul"
         sx={root}
       >
         <li>
@@ -85,8 +84,8 @@ const TVDetails = ({ tv }) => {
           </li>
         ))}
       </Paper>
-      <Paper 
-        component="ul" 
+      <Paper
+        component="ul"
         sx={root}
       >
         <li>
@@ -98,11 +97,11 @@ const TVDetails = ({ tv }) => {
           </li>
         ))}
       </Paper>
-      
+
       <Fab
         color="secondary"
         variant="extended"
-        onClick={() =>setDrawerOpen(true)}
+        onClick={() => setDrawerOpen(true)}
         sx={{
           position: 'fixed',
           bottom: '1em',
@@ -115,7 +114,7 @@ const TVDetails = ({ tv }) => {
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <TVReviews tv={tv} />
       </Drawer>
-      </>
+    </>
   );
 };
-export default TVDetails ;
+export default TVDetails;

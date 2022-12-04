@@ -14,7 +14,7 @@ const FantasyMoviesPage = (props) => {
     <PageTemplate
       title="Fantasy Movies"
       movies={movies}
-      
+
     />
   );
 };

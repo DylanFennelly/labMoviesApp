@@ -6,7 +6,7 @@ import Spinner from '../components/spinner';
 import AddToMustWatchIcon from '../components/cardIcons/addToMustWatch';
 
 const HomePage = (props) => {
-  const {  data, error, isLoading, isError }  = useQuery('upcoming', getUpcomingMovies)
+  const { data, error, isLoading, isError } = useQuery('upcoming', getUpcomingMovies)
 
   if (isLoading) {
     return <Spinner />
@@ -14,12 +14,12 @@ const HomePage = (props) => {
 
   if (isError) {
     return <h1>{error.message}</h1>
-  }  
+  }
   const movies = data.results;
 
   const mustWatch = movies.filter((m) => m.mustWatch);
   localStorage.setItem("mustWatch", JSON.stringify(mustWatch));
-  const addToMustWatch = (movieId) => true 
+  const addToMustWatch = (movieId) => true
 
   return (
     <PageTemplate

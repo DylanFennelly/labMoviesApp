@@ -2,7 +2,6 @@ import React from "react";
 import FantasyHeader from "../components/fantasyMovieHeader";
 import SampleFantasy from "./sampleFantasy";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
 import FantasyContextProvider from "../contexts/fantasyMoviesContext";
 
 export default {
@@ -19,6 +18,5 @@ export const Basic = () => <FantasyHeader movie={SampleFantasy} />;
 Basic.storyName = "Details Page";
 
 export const Form = () => <FantasyHeader movie={null} />;
-  
+
 Form.storyName = "Fantasy Movie Form";
-  

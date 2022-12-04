@@ -1,10 +1,7 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { useParams } from 'react-router-dom';
 import FantasyMovieDetails from "../components/fantasyMovieDetails";
 import PageTemplate from "../components/templateFantasyMoviePage";
-import { getMovie } from '../api/tmdb-api'
-import { useQuery } from "react-query";
-import Spinner from '../components/spinner'
 import { FantasyMoviesContext } from "../contexts/fantasyMoviesContext";
 
 
@@ -16,7 +13,7 @@ const FantasyMovieDetailsPage = (props) => {
 
   return (
     <PageTemplate movie={movie}>
-        <FantasyMovieDetails movie={movie} />
+      <FantasyMovieDetails movie={movie} />
     </PageTemplate>
   );
 };

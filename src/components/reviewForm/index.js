@@ -45,7 +45,7 @@ const ReviewForm = ({ movie }) => {
     review.movieId = movie.id;
     review.rating = rating;
     context.addReview(movie, review);
-    setOpen(true); 
+    setOpen(true);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React,  { useContext } from "react";
+import React, { useContext } from "react";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Paper from "@mui/material/Paper";
@@ -16,25 +16,25 @@ const ActorHeader = (props) => {
   const context = useContext(ActorContext);
 
   //changes icon and function depending on favourites state of actor
-  function favouritesState(actor){
+  function favouritesState(actor) {
     if (!context.favourites.includes(actor.id)) {
       return <AddToActorFavouritesIcon actor={actor} />
-    }else{
+    } else {
       return <RemoveFromActorFavouritesIcon actor={actor} />
     }
   }
 
   return (
-    <Paper 
-        component="div" 
-        sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            padding: 1.5,
-            margin: 0,
-        }}
-      >
+    <Paper
+      component="div"
+      sx={{
+        display: "flex",
+        justifyContent: "space-around",
+        flexWrap: "wrap",
+        padding: 1.5,
+        margin: 0,
+      }}
+    >
       <IconButton aria-label="go back" onClick={() => navigate(-1)} >
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
@@ -45,7 +45,7 @@ const ActorHeader = (props) => {
 
       {favouritesState(actor)}
 
-      <IconButton aria-label="go forward" onClick={() => navigate(+1) } >
+      <IconButton aria-label="go forward" onClick={() => navigate(+1)} >
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>

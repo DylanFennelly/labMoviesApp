@@ -1,4 +1,4 @@
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,7 +9,6 @@ import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
-import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
@@ -20,23 +19,23 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 export default function TVCard({ tv, action }) {
   const { favourites, addToFavourites } = useContext(TVContext);
   const { mustWatch, addToMustWatch } = useContext(TVContext);
- 
-   if (favourites.find((id) => id === tv.id)) {
-     tv.favourite = true;
-   } else {
-     tv.favourite = false
-   }
 
-   if (mustWatch.find((id) => id === tv.id)) {
+  if (favourites.find((id) => id === tv.id)) {
+    tv.favourite = true;
+  } else {
+    tv.favourite = false
+  }
+
+  if (mustWatch.find((id) => id === tv.id)) {
     tv.mustWatch = true;
-   }else{
+  } else {
     tv.mustWatch = false;
-   }
- 
-   const handleAddToFavourite = (e) => {
-     e.preventDefault();
-     addToFavourites(tv);
-   };
+  }
+
+  const handleAddToFavourite = (e) => {
+    e.preventDefault();
+    addToFavourites(tv);
+  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader

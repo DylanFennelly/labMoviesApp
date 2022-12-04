@@ -20,7 +20,7 @@ export default {
         {
             id: 35,
             name: "Comedy"
-        } 
+        }
     ],
     genres: [
         {
@@ -38,8 +38,8 @@ export default {
         {
             id: 35,
             name: "Comedy"
-        } 
-        ],
+        }
+    ],
     homepage: "https://chainsawman.dog/",
     in_production: true,
     id: 114410,
@@ -47,12 +47,12 @@ export default {
     origin_country: ["JP"],
     original_language: "ja",
     languages: ["ja"],
-    original_name: 	"チェンソーマン",
+    original_name: "チェンソーマン",
     overview: "Denji has a simple dream—to live a happy and peaceful life, spending time with a girl he likes. This is a far cry from reality, however, as Denji is forced by the yakuza into killing devils in order to pay off his crushing debts. Using his pet devil Pochita as a weapon, he is ready to do anything for a bit of cash.",
     popularity: 980.872,
     poster_path: "/npdB6eFzizki0WaZ1OvKcJrWe97.jpg",
     vote_average: 8.6,
-    vote_count:	346,
+    vote_count: 346,
     networks: [
         {
             id: 98,
@@ -89,7 +89,7 @@ export default {
             name: "Japan"
         }
     ],
-    seasons:[
+    seasons: [
         {
             air_date: "2022-10-12",
             episode_count: 12,
@@ -97,10 +97,10 @@ export default {
             name: "Season 1",
             overview: "",
             poster_path: "/sB2DASpJtfnTs7iK3RqkUMFVDEa.jpg",
-            season_number: 1 ,
+            season_number: 1,
         }
     ],
-    spoken_languages:[
+    spoken_languages: [
         {
             english_name: "Japanese",
             iso_639_1: "ja",

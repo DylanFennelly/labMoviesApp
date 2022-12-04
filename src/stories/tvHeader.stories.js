@@ -2,7 +2,6 @@ import React from "react";
 import TVHeader from "../components/headerTV";
 import SampleTV from "./sampleTVData";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
 import TVContextProvider from "../contexts/tvContext";
 
 export default {

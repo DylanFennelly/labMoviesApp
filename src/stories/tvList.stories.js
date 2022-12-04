@@ -2,7 +2,6 @@ import React from "react";
 import TVList from "../components/tvList";
 import SampleTV from "./sampleTVData";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
 import AddToTVFavouritesIcon from "../components/cardIcons/addToTVFavourites";
 import Grid from "@mui/material/Grid";
 import TVContextProvider from "../contexts/tvContext";

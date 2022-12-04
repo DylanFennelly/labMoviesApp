@@ -7,7 +7,7 @@ import Spinner from '../components/spinner';
 import RemoveFromMustWatch from "../components/cardIcons/removeFromMustWatch";
 
 const MustWatchMoviesPage = () => {
-  const {mustWatch: movieIds } = useContext(MoviesContext);
+  const { mustWatch: movieIds } = useContext(MoviesContext);
 
   // Create an array of queries and run in parallel.
   const mustWatchMovieQueries = useQueries(
@@ -39,7 +39,7 @@ const MustWatchMoviesPage = () => {
       action={(movie) => {
         return (
           <>
-          <RemoveFromMustWatch movie={movie} />
+            <RemoveFromMustWatch movie={movie} />
           </>
         );
       }}

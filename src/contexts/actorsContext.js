@@ -3,11 +3,11 @@ import React, { useState } from "react";
 export const ActorContext = React.createContext(null);
 
 const ActorContextProvider = (props) => {
-  const [favourites, setFavourites] = useState( [] )
+  const [favourites, setFavourites] = useState([])
   //for displaying in fantasyMovie with name
-  const [favouritesWithNames, setFavouritesWithNames] = useState( [] )
-  const [myReviews, setMyReviews] = useState( {} ) 
-  const [mustWatch, setMustWatch] = useState( [] )
+  const [favouritesWithNames, setFavouritesWithNames] = useState([])
+  const [myReviews, setMyReviews] = useState({})
+  const [mustWatch, setMustWatch] = useState([])
 
   const addToFavourites = (actor) => {
     let newFavourites = [...favourites];
@@ -27,13 +27,13 @@ const ActorContextProvider = (props) => {
 
   // We will use this function in a later section
   const removeFromFavourites = (actor) => {
-    setFavourites( favourites.filter(
+    setFavourites(favourites.filter(
       (tId) => tId !== actor.id
-    ) )
+    ))
 
-    const i = favouritesWithNames.findIndex (a => a.id === actor.id);
+    const i = favouritesWithNames.findIndex(a => a.id === actor.id);
     console.log(i)
-    if (i > -1){
+    if (i > -1) {
       favouritesWithNames.splice(i, 1)
       setFavouritesWithNames(favouritesWithNames)
     }
@@ -43,7 +43,7 @@ const ActorContextProvider = (props) => {
   };
 
   const addReview = (actor, review) => {
-    setMyReviews( {...myReviews, [actor.id]: review } )
+    setMyReviews({ ...myReviews, [actor.id]: review })
   };
 
   const addToMustWatch = (actor) => {
@@ -56,9 +56,9 @@ const ActorContextProvider = (props) => {
   };
 
   const removeFromMustWatch = (actor) => {
-    setMustWatch( mustWatch.filter(
+    setMustWatch(mustWatch.filter(
       (tId) => tId !== actor.id
-    ) )
+    ))
   };
 
 

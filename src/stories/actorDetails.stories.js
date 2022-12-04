@@ -18,7 +18,7 @@ export const Basic = () => <ActorDetails actor={SampleActor} />;
 Basic.storyName = "NoDeathDay";
 
 export const Alternate = () => {
-  const sampleWithDeath = { ...SampleActor, deathday: "2022-12-31"};
+  const sampleWithDeath = { ...SampleActor, deathday: "2022-12-31" };
   return (
     <ActorDetails actor={sampleWithDeath} />
   )

@@ -1,11 +1,10 @@
 import React from "react";
-import {createRoot} from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import UpcomingPage from "./pages/upcomingMoviesPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
-import {Link} from 'react-router-dom'
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
 import { QueryClientProvider, QueryClient } from "react-query";
@@ -32,7 +31,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 360000,
-      refetchInterval: 360000, 
+      refetchInterval: 360000,
       refetchOnWindowFocus: false
     },
   },
@@ -51,10 +50,10 @@ const App = () => {
                   <Route exact path="/movies/favourites" element={<FavouriteMoviesPage />} />
                   <Route path="/movies/:id" element={<MoviePage />} />
                   <Route path="/" element={<HomePage />} />
-                  <Route path="*" element={ <Navigate to="/" /> } />
-                  <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
+                  <Route path="*" element={<Navigate to="/" />} />
+                  <Route path="/reviews/:id" element={<MovieReviewPage />} />
                   <Route path="/movies/upcoming" element={<UpcomingPage />} />
-                  <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+                  <Route path="/reviews/form" element={<AddMovieReviewPage />} />
                   <Route path="/movies/mustwatch" element={<MustWatchMoviesPage />} />
                   <Route path="/movies/top" element={<TopMoviesPage />} />
                   <Route path="/tv" element={<DiscoverTVPage />} />
@@ -64,9 +63,9 @@ const App = () => {
                   <Route path="/actors" element={<PopularActorsPage />} />
                   <Route path="/actors/:id" element={<ActorDetailsPage />} />
                   <Route path="/actors/favourites" element={<FavouriteActorsPage />} />
-                  <Route path="/movies/fantasy" element={<FantasyMoviesPage/>} />
-                  <Route path="/movies/fantasy/new" element={<AddFantasyMoviePage/>} />
-                  <Route path="/movies/fantasy/:id" element={<FantasyMovieDetailsPage/>} />
+                  <Route path="/movies/fantasy" element={<FantasyMoviesPage />} />
+                  <Route path="/movies/fantasy/new" element={<AddFantasyMoviePage />} />
+                  <Route path="/movies/fantasy/:id" element={<FantasyMovieDetailsPage />} />
                 </Routes>
               </FantasyMoviesContextProvider>
             </ActorsContextProvider>
@@ -78,5 +77,5 @@ const App = () => {
   );
 };
 
-const rootElement = createRoot( document.getElementById("root") )
-rootElement.render(<App /> );
+const rootElement = createRoot(document.getElementById("root"))
+rootElement.render(<App />);

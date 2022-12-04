@@ -14,48 +14,48 @@ import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner'
 
-const formControl = 
-  {
-    margin: 1,
-    minWidth: 220,
-    backgroundColor: "rgb(255, 255, 255)"
+const formControl =
+{
+  margin: 1,
+  minWidth: 220,
+  backgroundColor: "rgb(255, 255, 255)"
+};
+
+export default function FilterMoviesCard(props) {
+  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+  const genres = data.genres;
+  if (genres[0].name !== "All") {
+    genres.unshift({ id: "0", name: "All" });
+  }
+
+  const handleChange = (e, type, value) => {
+    e.preventDefault();
+    props.onUserInput(type, value); // NEW
   };
 
-  export default function FilterMoviesCard(props) {
-    const { data, error, isLoading, isError } = useQuery("genres", getGenres);
-  
-    if (isLoading) {
-      return <Spinner />;
-    }
-  
-    if (isError) {
-      return <h1>{error.message}</h1>;
-    }
-    const genres = data.genres;
-    if (genres[0].name !== "All"){
-      genres.unshift({ id: "0", name: "All" });
-    }
-  
-    const handleChange = (e, type, value) => {
-      e.preventDefault();
-      props.onUserInput(type, value); // NEW
-    };
-  
-    const handleTextChange = (e, props) => {
-      handleChange(e, "name", e.target.value);
-    };
-  
-    const handleGenreChange = (e) => {
-      handleChange(e, "genre", e.target.value);
-    };
+  const handleTextChange = (e, props) => {
+    handleChange(e, "name", e.target.value);
+  };
+
+  const handleGenreChange = (e) => {
+    handleChange(e, "genre", e.target.value);
+  };
 
 
   return (
-    <Card 
+    <Card
       sx={{
         maxWidth: 345,
         backgroundColor: "rgb(204, 204, 0)"
-      }} 
+      }}
       variant="outlined">
       <CardContent>
         <Typography variant="h5" component="h1">

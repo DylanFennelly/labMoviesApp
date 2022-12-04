@@ -2,7 +2,6 @@ import React from "react";
 import FantasyList from "../components/fantasyMovieList";
 import SampleFantasy from "./sampleFantasy";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
 import Grid from "@mui/material/Grid";
 import FantasyContextProvider from "../contexts/fantasyMoviesContext";
 

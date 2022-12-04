@@ -3,7 +3,6 @@ import FantasyMovieCard from "../components/fantasyMovieCard";
 import SampleFantasy from "./sampleFantasy";
 import { MemoryRouter } from "react-router";
 import FantasyContextProvider from "../contexts/fantasyMoviesContext";
-import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Fantasy Movie List/FantasyCard",

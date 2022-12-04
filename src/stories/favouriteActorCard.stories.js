@@ -3,7 +3,6 @@ import FavouriteActorCard from "../components/favouriteActorCard";
 import SampleActor from "./sampleActorData";
 import { MemoryRouter } from "react-router";
 import ActorContextProvider from "../contexts/actorsContext";
-import { action } from "@storybook/addon-actions";
 import AddToActorFavouritesIcon from "../components/cardIcons/addToActorFavourites";
 
 export default {
