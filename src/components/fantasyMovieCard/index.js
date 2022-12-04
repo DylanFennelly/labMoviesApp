@@ -31,8 +31,8 @@ export default function FantasyMovieCard({ movie: fantasyMovie}) {
       <CardMedia
         sx={{ height: 500 }}
         image={
-          fantasyMovie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${fantasyMovie.poster_path}`
+          fantasyMovie.image
+            ? fantasyMovie.image
             : img
         }
       />

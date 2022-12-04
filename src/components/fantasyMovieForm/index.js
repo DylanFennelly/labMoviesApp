@@ -36,11 +36,11 @@ const FantasyMovieForm = () => {
       const [id, setId] = useState(0);
       const [actor, setActor] = useState(null)
       const [selectedGenres, setSelectedGenres] = useState( [] );
-      const [selectedActors, setSelectedActors] = useState ( [] )
+      const [selectedActors, setSelectedActors] = useState ( [] );
+      const [image, setImage] = useState (null);
+      const [imageName, setImageName] = useState("")
       const [open, setOpen] = React.useState(false);
       const [date, setDate] = React.useState(null);
-
-      console.log(selectedActors)
 
       console.error = console.warn = () => {};
 
@@ -55,6 +55,22 @@ const FantasyMovieForm = () => {
       }
       const genres = data.genres;
 
+      //https://stackoverflow.com/questions/16215771/how-to-open-select-file-dialog-via-js
+      var imageSelect = document.createElement('input');
+      imageSelect.type = 'file';
+
+      imageSelect.onchange = e => {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+
+        reader.onload=readerEvent => {
+          var content = readerEvent.target.result
+          setImage(content)
+          setImageName(file.name)
+        }
+      }
 
 
       //https://beta.reactjs.org/learn/updating-arrays-in-state
@@ -106,15 +122,20 @@ const FantasyMovieForm = () => {
         fantasy.id = id
         fantasy.genres = selectedGenres;
         fantasy.actors = selectedActors;
+        fantasy.image = image;
         const reg = new RegExp("([0-9]{4})-([0-9]{2})-([0-9]{2})");
-        if(reg.test(fantasy.release_date))
+        console.log(reg.test(fantasy.release_date))
+        if(reg.test(fantasy.release_date)){
           if (fantasy.genres.length != 0){
 
             context.addToFantasyMovies(fantasy);
             setOpen(true); 
+          }else{
+          window.alert("No genres have been selected! \nPlease selected at least one genre to proceed")
           }
-
-          console.log(fantasy)
+        }else{
+        alert("Release date does not match the required format.\nFormat: YYYY-MM-DD")
+        }
       };
 
       //updates the genre select box with latest selected genre
@@ -191,7 +212,7 @@ const FantasyMovieForm = () => {
               )}
             />
             {errors.overview && (
-              <Typography variant="h6" component="p">
+              <Typography variant="h6" component="p" style={{color: 'red'}}>
                 {errors.overview.message}
               </Typography>
             )}
@@ -264,9 +285,9 @@ const FantasyMovieForm = () => {
                 />
               )}
             />
-            {errors.date && (
+            {errors.release_date && (
               <Typography variant="h6" component="p" style={{color: 'red'}}>
-                {errors.date.message}
+                {errors.release_date.message}
               </Typography>
             )}
 
@@ -344,7 +365,22 @@ const FantasyMovieForm = () => {
               </Typography>
             )}
             </div>
-            
+
+            <div >
+              <Box sx={styles.imageBox}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={styles.imageButton}
+                onClick={() => imageSelect.click()}>
+                Add image
+              </Button>
+                <Typography sx={styles.imageText}>
+                  {imageName}
+                </Typography>
+              </Box>
+            </div>
+
 
             
     

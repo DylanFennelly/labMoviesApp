@@ -29,6 +29,17 @@ const styles =  {
     },
     fab: {
       marginLeft: 1,
+    },
+    imageButton: {
+      marginTop:1,
+      marginBottom:2
+    },
+    imageBox:{
+      display: "flex",
+    },
+    imageText:{
+      marginTop: 2,
+      marginLeft: 2,
     }
   };
   export default styles
