@@ -9,7 +9,6 @@ const FantasyMoviesContextProvider = (props) => {
     fantasy.push(newFantasy)
   };
 
-  // We will use this function in a later section
   const removeFromFantasyMovies = (fantasy) => {
     setFantasy(fantasy.filter(
       (fId) => fId !== fantasy.id

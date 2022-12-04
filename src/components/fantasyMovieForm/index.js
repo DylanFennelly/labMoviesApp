@@ -92,7 +92,6 @@ const FantasyMovieForm = () => {
   }
 
   function addToSelectedActors(actor) {
-    console.log(actor)
     if (!selectedActors.includes(actor)) {
       setSelectedActors([...selectedActors, actor])
     }
@@ -122,7 +121,6 @@ const FantasyMovieForm = () => {
     fantasy.actors = selectedActors;
     fantasy.image = image;
     const reg = new RegExp("([0-9]{4})-([0-9]{2})-([0-9]{2})");
-    console.log(reg.test(fantasy.release_date))
     if (reg.test(fantasy.release_date)) {
       if (fantasy.genres.length != 0) {
 

@@ -15,7 +15,6 @@ const MoviesContextProvider = (props) => {
     setFavourites(newFavourites);
   };
 
-  // We will use this function in a later section
   const removeFromFavourites = (movie) => {
     setFavourites(favourites.filter(
       (mId) => mId !== movie.id
@@ -32,7 +31,6 @@ const MoviesContextProvider = (props) => {
       newMustWatch.push(movie.id);
     }
     setMustWatch(newMustWatch);
-    //console.log(newMustWatch)
   };
 
   const removeFromMustWatch = (movie) => {

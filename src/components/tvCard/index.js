@@ -18,18 +18,11 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 export default function TVCard({ tv, action }) {
   const { favourites, addToFavourites } = useContext(TVContext);
-  const { mustWatch, addToMustWatch } = useContext(TVContext);
 
   if (favourites.find((id) => id === tv.id)) {
     tv.favourite = true;
   } else {
     tv.favourite = false
-  }
-
-  if (mustWatch.find((id) => id === tv.id)) {
-    tv.mustWatch = true;
-  } else {
-    tv.mustWatch = false;
   }
 
   const handleAddToFavourite = (e) => {

@@ -13,7 +13,6 @@ export const getMovies = () => {
 };
 
 export const getMovie = (args) => {
-  // console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
@@ -68,7 +67,6 @@ export const getMovieReviews = (id) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.results);
       return json.results;
     });
 };
@@ -134,7 +132,6 @@ export const getTVImages = ({ queryKey }) => {
 };
 
 export const getTV = (args) => {
-  console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
@@ -156,7 +153,6 @@ export const getTVReviews = (id) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.results);
       return json.results;
     });
 };
@@ -176,7 +172,6 @@ export const getPopularActors = () => {
 };
 
 export const getActor = (args) => {
-  console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(

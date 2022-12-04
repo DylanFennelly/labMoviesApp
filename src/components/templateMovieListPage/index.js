@@ -11,7 +11,6 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [languageFilter, setLanguageFilter] = useState("All")
   const genreId = Number(genreFilter);
 
-  console.log(movies)
   let displayedMovies = movies
     .filter((m) => {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
@@ -33,7 +32,6 @@ function MovieListPageTemplate({ movies, title, action }) {
     else setGenreFilter(value);
   };
 
-  console.log(displayedMovies)
   return (
     <Grid container sx={{ padding: '20px' }}>
       <Grid item xs={12}>
