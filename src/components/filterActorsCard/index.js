@@ -21,21 +21,10 @@ const formControl =
     backgroundColor: "rgb(255, 255, 255)"
   };
 
-  export default function FilterMoviesCard(props) {
-    const { data, error, isLoading, isError } = useQuery("genres", getGenres);
   
-    if (isLoading) {
-      return <Spinner />;
-    }
-  
-    if (isError) {
-      return <h1>{error.message}</h1>;
-    }
-    const genres = data.genres;
-    if (genres[0].name !== "All"){
-      genres.unshift({ id: "0", name: "All" });
-    }
-  
+
+  export default function FilterActorsCard(props) {
+    console.warn = () => {};
     const handleChange = (e, type, value) => {
       e.preventDefault();
       props.onUserInput(type, value); // NEW
@@ -45,8 +34,8 @@ const formControl =
       handleChange(e, "name", e.target.value);
     };
   
-    const handleGenreChange = (e) => {
-      handleChange(e, "genre", e.target.value);
+    const handleGenderChange = (e) => {
+      handleChange(e, "gender", e.target.value);
     };
 
     const handleRatingChange = (e) => {
@@ -78,6 +67,20 @@ const formControl =
           value={props.nameFilter}
           onChange={handleTextChange}
         />
+        <FormControl sx={formControl}>
+          <InputLabel id="gender-label">Gender</InputLabel>
+          <Select
+            labelId="gender-label"
+            id="gender-select"
+            defaultValue=""
+            value={props.genderFilter}
+            onChange={handleGenderChange}
+          >
+           <MenuItem value={0}>Both</MenuItem>
+           <MenuItem value={1}>Female</MenuItem>
+           <MenuItem value={2}>Male</MenuItem>
+          </Select>
+        </FormControl>
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}

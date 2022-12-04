@@ -30,7 +30,8 @@ export default function ActorCard({ actor, action }) {
    }
 
    //gender is stored as number value, 1 for female and 2 for male. This translates that number value into a string value
-   (actor.gender === 1) ? actor.gender = "  Female" : actor.gender = "  Male"
+   let gender;
+   (actor.gender === 1) ? gender = "  Female" : gender = "  Male"
 
    //since "title" is used for movies and "name" for tv series, check media_type of known_for entry and return proper naming for each
    function handleMediaType(med){
@@ -87,7 +88,7 @@ export default function ActorCard({ actor, action }) {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <WcIcon/>
-              {actor.gender}
+              {gender}
             </Typography>
           </Grid>
         </Grid>
