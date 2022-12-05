@@ -104,7 +104,7 @@ Name: Dylan Fennelly (20093427)
 
 >Displays actor details, including name, biography, gender, birth date, death date (if applicable), and birth location. Actors can be added to and removed from favourites.
 
-![ ](./images/favouriteactors.png)
+![ ](./images/favouriteActors.png)
 
 >Displays favourite actors. From here, favourites can be removed.
 
