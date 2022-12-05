@@ -242,7 +242,6 @@ const FantasyMovieForm = () => {
             onClick={() => addToSelectedGenres(id)}>
             Add genre
           </Button>
-          {/* https://beta.reactjs.org/learn/updating-arrays-in-state  */}
           {selectedGenres.map(genre => (
             <Fab onClick={() => (
               setSelectedGenres(
@@ -318,7 +317,6 @@ const FantasyMovieForm = () => {
               onClick={() => addToSelectedActors(actor)}>
               Add actor
             </Button>
-            {/* https://beta.reactjs.org/learn/updating-arrays-in-state  */}
             {selectedActors.map(actor => (
               <Fab onClick={() => (
                 setSelectedActors(

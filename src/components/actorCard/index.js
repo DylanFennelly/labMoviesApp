@@ -86,11 +86,11 @@ export default function ActorCard({ actor, action }) {
         </Grid>
         <Grid container>
           <Grid item xs={20}>
+            {/* https://smartdevpreneur.com/how-to-make-mui-typography-text-italic-bold-or-with-ellipses/ */}
             <Typography variant="h6" component="p" sx={{ fontWeight: 'bold' }}>
               Known for:
             </Typography>
             {actor.known_for.map((med) => (
-              // https://smartdevpreneur.com/how-to-make-mui-typography-text-italic-bold-or-with-ellipses/
               <Link to={handleLinkType(med)}>
                 <Typography variant="h6" component="p" >
                   {handleMediaType(med)}
